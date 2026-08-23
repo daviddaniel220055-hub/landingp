@@ -3,20 +3,23 @@
 import React, { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "Home", href: "/home" },
-  { name: "About", href: "/about" },
-  { name: "Courses", href: "/courses" },
-  { name: "Services", href: "/service" },
-  { name: "Career", href: "/career" },
-  { name: "Contact", href: "/contact" },
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Courses", href: "#courses" },
+  { name: "Services", href: "#services" },
+  { name: "Career", href: "#career" },
+  { name: "Contact", href: "#contact" },
 ];
 
-export default function App() {
+export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const sections = navItems
-      .map((item) => document.getElementById(item.name.toLowerCase()))
+      .map((item) => {
+        const id = item.href.replace("#", "");
+        return document.getElementById(id);
+      })
       .filter(Boolean);
 
     const observer = new IntersectionObserver(
@@ -24,7 +27,8 @@ export default function App() {
         const visibleSections = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
-            (a, b) => b.intersectionRatio - a.intersectionRatio
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
           );
 
         if (visibleSections.length > 0) {
@@ -50,104 +54,150 @@ export default function App() {
     const element = document.getElementById(section);
 
     if (element) {
-      element.scrollIntoView({
+      const navbarHeight = 100;
+
+      const elementPosition =
+        element.getBoundingClientRect().top +
+        window.scrollY;
+
+      window.scrollTo({
+        top: elementPosition - navbarHeight,
         behavior: "smooth",
-        block: "start",
       });
     }
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <header
+      className="
+        fixed
+        left-0
+        top-0
+        z-50
+        h-[100px]
+        w-full
+        bg-gradient-to-r
+        from-[#f9e7fa]
+        via-white
+        to-white
+        shadow-sm
+      "
+    >
+      <div className="relative flex h-[100px] w-full items-center">
 
-      {/* ================= NAVBAR ================= */}
+        {/* ================= LOGO ================= */}
 
-      <header className="fixed left-0 top-0 z-50 h-[100px] w-full bg-gradient-to-r from-[#f9e7fa] via-white to-white shadow-sm">
-
-        <div className="relative flex h-full w-full items-center">
-
-          {/* ================= LOGO ================= */}
-
-          <div className="absolute left-[55px] top-1/2 flex -translate-y-1/2 items-center">
-            <img
-              src="/images/logo.png"
-              alt="Joshconsult Technologies Inc"
-              className="block w-[105px] object-contain"
-            />
-          </div>
-
-          {/* ================= NAVIGATION ================= */}
-
-          <nav
+        <div
+          className="
+            absolute
+            left-[55px]
+            top-1/2
+            flex
+            -translate-y-1/2
+            items-center
+          "
+        >
+          <img
+            src="/images/logo.png"
+            alt="Joshconsult Technologies Inc"
             className="
-              absolute
-              left-1/2
-              top-1/2
-              flex
-              -translate-x-1/2
-              -translate-y-1/2
-              items-center
-              gap-[36px]
+              block
+              w-[105px]
+              object-contain
             "
-          >
-            {navItems.map((item) => {
-              const section = item.name.toLowerCase();
-              const isActive = activeSection === section;
+          />
+        </div>
 
-              return (
-                <button
-                  key={item.name}
-                  type="button"
-                  onClick={() => handleNavigation(section)}
+        {/* ================= NAVIGATION ================= */}
+
+        <nav
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            flex
+            -translate-x-1/2
+            -translate-y-1/2
+            items-center
+            gap-[36px]
+          "
+        >
+          {navItems.map((item) => {
+            const section = item.href.replace("#", "");
+            const isActive = activeSection === section;
+
+            return (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => handleNavigation(section)}
+                className={`
+                  relative
+                  whitespace-nowrap
+                  border-0
+                  bg-transparent
+                  p-0
+                  text-[12px]
+                  font-normal
+                  outline-none
+                  ${
+                    isActive
+                      ? "text-[#f6a000]"
+                      : "text-[#111111]"
+                  }
+                `}
+              >
+                {item.name}
+
+                {/* Active indicator */}
+                <span
                   className={`
-                    relative
-                    whitespace-nowrap
-                    border-0
-                    bg-transparent
-                    p-0
-                    text-[12px]
-                    font-normal
+                    absolute
+                    -bottom-[8px]
+                    left-1/2
+                    h-[2px]
+                    -translate-x-1/2
+                    rounded-full
+                    bg-[#f6a000]
                     ${
                       isActive
-                        ? "text-[#f6a000]"
-                        : "text-[#111111]"
+                        ? "w-full"
+                        : "w-0"
                     }
                   `}
-                >
-                  {item.name}
-                </button>
-              );
-            })}
-          </nav>
+                />
+              </button>
+            );
+          })}
+        </nav>
 
-          {/* ================= APPLY NOW ================= */}
+        {/* ================= APPLY NOW ================= */}
 
-          <button
-            type="button"
-            className="
-              absolute
-              right-[55px]
-              top-1/2
-              flex
-              h-[35px]
-              w-[93px]
-              -translate-y-1/2
-              items-center
-              justify-center
-              rounded-[10px]
-              border-0
-              bg-[#f6a000]
-              text-[11px]
-              font-normal
-              text-white
-            "
-          >
-            Apply Now
-          </button>
+        <button
+          type="button"
+          className="
+            absolute
+            right-[55px]
+            top-1/2
+            flex
+            h-[35px]
+            w-[93px]
+            -translate-y-1/2
+            items-center
+            justify-center
+            rounded-[10px]
+            border-0
+            bg-[#f6a000]
+            text-[11px]
+            font-normal
+            text-white
+            outline-none
+          "
+        >
+          Apply Now
+        </button>
 
-        </div>
-      </header>
-
-    </div>
+      </div>
+    </header>
   );
 }
