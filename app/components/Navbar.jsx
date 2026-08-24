@@ -32,7 +32,9 @@ export default function Navbar() {
           );
 
         if (visibleSections.length > 0) {
-          setActiveSection(visibleSections[0].target.id);
+          setActiveSection(
+            visibleSections[0].target.id
+          );
         }
       },
       {
@@ -41,17 +43,22 @@ export default function Navbar() {
       }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((section) =>
+      observer.observe(section)
+    );
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      sections.forEach((section) =>
+        observer.unobserve(section)
+      );
     };
   }, []);
 
   const handleNavigation = (section) => {
     setActiveSection(section);
 
-    const element = document.getElementById(section);
+    const element =
+      document.getElementById(section);
 
     if (element) {
       const navbarHeight = 100;
@@ -123,14 +130,19 @@ export default function Navbar() {
           "
         >
           {navItems.map((item) => {
-            const section = item.href.replace("#", "");
-            const isActive = activeSection === section;
+            const section =
+              item.href.replace("#", "");
+
+            const isActive =
+              activeSection === section;
 
             return (
               <button
                 key={item.name}
                 type="button"
-                onClick={() => handleNavigation(section)}
+                onClick={() =>
+                  handleNavigation(section)
+                }
                 className={`
                   relative
                   whitespace-nowrap
@@ -173,8 +185,8 @@ export default function Navbar() {
 
         {/* ================= APPLY NOW ================= */}
 
-        <button
-          type="button"
+        <a
+          href="/form"
           className="
             absolute
             right-[55px]
@@ -186,16 +198,19 @@ export default function Navbar() {
             items-center
             justify-center
             rounded-[10px]
-            border-0
             bg-[#f6a000]
             text-[11px]
             font-normal
             text-white
+            no-underline
             outline-none
+            transition
+            duration-200
+            hover:bg-[#e99500]
           "
         >
           Apply Now
-        </button>
+        </a>
 
       </div>
     </header>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -68,7 +69,6 @@ export default function Footer() {
           </div>
         </div>
 
-
         {/* ================= FOOTER COLUMNS ================= */}
 
         <div className="mt-[46px] grid grid-cols-[1.7fr_0.9fr_1.05fr_0.7fr] gap-[55px]">
@@ -115,7 +115,6 @@ export default function Footer() {
             </div>
           </div>
 
-
           {/* ================= PRODUCTS ================= */}
 
           <div>
@@ -133,7 +132,6 @@ export default function Footer() {
               <p>Courses For Children</p>
             </div>
           </div>
-
 
           {/* ================= SERVICES ================= */}
 
@@ -153,7 +151,6 @@ export default function Footer() {
             </div>
           </div>
 
-
           {/* ================= ABOUT ================= */}
 
           <div>
@@ -162,14 +159,23 @@ export default function Footer() {
             </h3>
 
             <div className="space-y-[11px] text-[8px] font-normal text-[#777777]">
+
               <p>About Us</p>
+
               <p>Contact Us</p>
-              <p>FAQ</p>
+
+              {/* FAQ LINK */}
+              <Link
+                href="/faq"
+                className="block transition-colors duration-200 hover:text-[#111111]"
+              >
+                FAQ
+              </Link>
+
             </div>
           </div>
 
         </div>
-
 
         {/* ================= COPYRIGHT ================= */}
 
