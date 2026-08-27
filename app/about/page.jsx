@@ -316,60 +316,61 @@ const App = () => {
             <div className="relative overflow-hidden rounded-lg">
 
               <img
-                src="/punk.jpg"
+                src="/TOSH.png"
                 alt="Team member"
-                className="h-64 w-full object-cover"
+                className="h-97 w-full object-cover"
               />
 
               <div className="absolute bottom-3 left-3 right-3 rounded-md bg-white px-4 py-3 text-center shadow-sm">
                 <h3 className="text-[11px] font-bold">
-                  MK PUNK
+                TOSH
                 </h3>
 
                 <p className="mt-1 text-[10px] text-gray-500">
-                  CEO & Founder
+                  CEO & FOUNDER
                 </p>
               </div>
 
             </div>
 
 
-            <div className="relative overflow-hidden rounded-lg">
+            <div className="relative overflow-hidden justify-center rounded-lg">
 
               <img
-                src="/punk.jpg"
+                src="/aunty.jpeg"
                 alt="Team member"
-                className="h-64 w-full object-cover"
+                className="h-97 w-full object-cover"
               />
 
               <div className="absolute bottom-3 left-3 right-3 rounded-md bg-white px-4 py-3 text-center shadow-sm">
                 <h3 className="text-[11px] font-bold">
-                 MK PUNK
+                 Tijani Fathia
                 </h3>
 
                 <p className="mt-1 text-[10px] text-gray-500">
-                  Software Developer
+                 Data scientist
                 </p>
               </div>
 
             </div>
 
 
-            <div className="relative overflow-hidden rounded-lg">
+            <div className="relative overflow-hidden rounded-xs">
 
               <img
                 src="/punk.jpg"
                 alt="Team member"
-                className="h-64 w-full object-cover"
+                className="h-97 w-full object-cover"
               />
 
               <div className="absolute bottom-3 left-3 right-3 rounded-md bg-white px-4 py-3 text-center shadow-sm">
                 <h3 className="text-[11px] font-bold">
-                  MK PUNK
+                   Abdul Kadir MuBarak
+
                 </h3>
 
                 <p className="mt-1 text-[10px] text-gray-500">
-                  UI/UX Designer
+                  FullStack Developer
                 </p>
               </div>
 
