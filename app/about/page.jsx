@@ -316,14 +316,14 @@ const App = () => {
             <div className="relative overflow-hidden rounded-lg">
 
               <img
-                src="/benz.jpg"
+                src="/punk.jpg"
                 alt="Team member"
                 className="h-64 w-full object-cover"
               />
 
               <div className="absolute bottom-3 left-3 right-3 rounded-md bg-white px-4 py-3 text-center shadow-sm">
                 <h3 className="text-[11px] font-bold">
-                  SAMADOSKI
+                  MK PUNK
                 </h3>
 
                 <p className="mt-1 text-[10px] text-gray-500">
@@ -337,14 +337,14 @@ const App = () => {
             <div className="relative overflow-hidden rounded-lg">
 
               <img
-                src="/benz.jpg"
+                src="/punk.jpg"
                 alt="Team member"
                 className="h-64 w-full object-cover"
               />
 
               <div className="absolute bottom-3 left-3 right-3 rounded-md bg-white px-4 py-3 text-center shadow-sm">
                 <h3 className="text-[11px] font-bold">
-                 SAMADOSKI
+                 MK PUNK
                 </h3>
 
                 <p className="mt-1 text-[10px] text-gray-500">
@@ -358,14 +358,14 @@ const App = () => {
             <div className="relative overflow-hidden rounded-lg">
 
               <img
-                src="/benz.jpg"
+                src="/punk.jpg"
                 alt="Team member"
                 className="h-64 w-full object-cover"
               />
 
               <div className="absolute bottom-3 left-3 right-3 rounded-md bg-white px-4 py-3 text-center shadow-sm">
                 <h3 className="text-[11px] font-bold">
-                  SAMADOSKI
+                  MK PUNK
                 </h3>
 
                 <p className="mt-1 text-[10px] text-gray-500">
