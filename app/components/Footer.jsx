@@ -478,7 +478,7 @@ export default function Footer() {
           }}
         >
           <p className="text-[11px] font-normal text-[#777777]">
-            Copyright © 2015 - 2023 | All Rights Reserved.
+            Copyright © {new Date().getFullYear()} | All Rights Reserved.
           </p>
         </motion.div>
 

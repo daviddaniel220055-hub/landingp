@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Joshconsult Technologies Inc",
-  description: "Joshconsult Technologies Inc",
+  description: "Toshconsult Technologies Inc",
 };
 
 export default function RootLayout({

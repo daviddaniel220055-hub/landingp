@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const courses = [
   "Web Development",
@@ -22,6 +22,61 @@ export default function RegisterPage() {
     reason: "",
   });
 
+  const [job, setJob] = useState(null);
+  const [jobLoading, setJobLoading] = useState(true);
+  const [jobError, setJobError] = useState("");
+
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    const jobId = params.get("jobId");
+
+    if (!jobId) {
+      setJobLoading(false);
+      setJobError("No job was selected.");
+      return;
+    }
+
+    const getJob = async () => {
+      try {
+        setJobLoading(true);
+        setJobError("");
+
+        const response = await fetch(
+          `https://toshconsultblogfastapi.onrender.com/jobs/${jobId}`,
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        console.log("SELECTED JOB:", data);
+
+        setJob(data);
+      } catch (error) {
+        console.error("GET JOB ERROR:", error);
+
+        setJobError(
+          "Unable to load the selected job. Please go back and try again."
+        );
+      } finally {
+        setJobLoading(false);
+      }
+    };
+
+    getJob();
+  }, []);
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -31,626 +86,559 @@ export default function RegisterPage() {
     }));
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Registration Data:", formData);
+    const params = new URLSearchParams(window.location.search);
 
-    alert("Registration submitted successfully!");
+    const jobId = params.get("jobId");
+
+    const applicationData = {
+      jobId,
+      jobTitle: job?.title || job?.job_title || "",
+      company: job?.company || "",
+      ...formData,
+    };
+
+    console.log("APPLICATION DATA:", applicationData);
+
+    alert("Application submitted successfully!");
   };
 
   return (
-    <div className="min-h-screen w-full bg-white">
-
-      {/* =====================================================
-          MAIN PAGE
-      ====================================================== */}
-
+    <div className="min-h-screen w-full bg-[#fafafa]">
       <main
         className="
           mx-auto
-          w-[90%]
-          max-w-[850px]
+          w-[92%]
+          max-w-[900px]
           pb-[80px]
-          pt-[190px]
+          pt-[120px]
+          mt-10
 
           max-[768px]:w-[92%]
-          max-[768px]:pt-[175px]
+          max-[768px]:pt-[100px]
 
           max-[480px]:w-[94%]
-          max-[480px]:pt-[160px]
+          max-[480px]:pt-[70px]
         "
       >
 
-        {/* ===================================================
-            LOGO
-        ==================================================== */}
-
-        <div className="mb-[30px] flex justify-center">
-          <img
-            src="/images/logo.png"
-            alt="Joshconsult Technologies Inc"
-            className="
-              h-auto
-              w-[100px]
-              object-contain
-
-              max-[480px]:w-[85px]
-            "
-          />
-        </div>
-
-        {/* ===================================================
-            FORM TITLE
-        ==================================================== */}
 
         <div
           className="
-            mb-[40px]
-            flex
-            h-[52px]
-            items-center
-            rounded-[6px]
-            bg-[#fff8d8]
-            px-[25px]
-            text-[15px]
-            font-medium
-            text-[#e5a21a]
+            rounded-[14px]
+            border
+            border-[#e8e8e8]
+            bg-white
+            p-[45px]
+            mt-30px
+            shadow-[0_10px_35px_rgba(0,0,0,0.05)]
 
-            max-[768px]:text-[14px]
+            max-[768px]:p-[32px]
 
-            max-[480px]:
-            mb-[30px]
-            h-[48px]
-            px-[18px]
-            text-[12px]
+            max-[480px]:p-[22px]
           "
         >
-          Register For Our Training
-        </div>
 
-        {/* ===================================================
-            FORM
-        ==================================================== */}
-
-        <form onSubmit={handleSubmit}>
-
-          {/* =================================================
-              FULL NAME + EMAIL
-          ================================================== */}
-
-          <div
-            className="
-              grid
-              grid-cols-2
-              gap-x-[30px]
-
-              max-[600px]:grid-cols-1
-              max-[600px]:gap-x-0
-            "
-          >
-
-            {/* FULL NAME */}
-
-            <div className="mb-[32px] w-full">
-
-              <label
-                htmlFor="fullName"
-                className="
-                  mb-[10px]
-                  block
-                  text-[11px]
-                  font-medium
-                  text-[#505050]
-
-                  max-[480px]:text-[10px]
-                "
-              >
-                FULL NAME
-              </label>
-
-              <input
-                id="fullName"
-                name="fullName"
-                type="text"
-                value={formData.fullName}
-                onChange={handleChange}
-                className="
-                  h-[42px]
-                  w-full
-                  rounded-[4px]
-                  border
-                  border-[#e8e8e8]
-                  bg-white
-                  px-[12px]
-                  text-[12px]
-                  text-[#333]
-                  outline-none
-                  transition
-
-                  focus:border-[#f6a000]
-                  focus:ring-2
-                  focus:ring-[#f6a000]/10
-                "
-              />
-
-            </div>
-
-            {/* EMAIL */}
-
-            <div className="mb-[32px] w-full">
-
-              <label
-                htmlFor="email"
-                className="
-                  mb-[10px]
-                  block
-                  text-[11px]
-                  font-medium
-                  text-[#505050]
-
-                  max-[480px]:text-[10px]
-                "
-              >
-                EMAIL
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="
-                  h-[42px]
-                  w-full
-                  rounded-[4px]
-                  border
-                  border-[#e8e8e8]
-                  bg-white
-                  px-[12px]
-                  text-[12px]
-                  text-[#333]
-                  outline-none
-                  transition
-
-                  focus:border-[#f6a000]
-                  focus:ring-2
-                  focus:ring-[#f6a000]/10
-                "
-              />
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              CHOOSE COURSE
-          ================================================== */}
-
-          <div className="mb-[32px] w-full">
-
-            <label
-              htmlFor="course"
+          <div className="mb-[40px]">
+            <div
               className="
-                mb-[10px]
-                block
-                text-[11px]
-                font-medium
-                text-[#505050]
+                mb-[20px]
+                flex
+                min-h-[52px]
+                items-center
+                rounded-[8px]
+                bg-[#fff8d8]
+                px-[20px]
+                text-[16px]
+                font-semibold
+                text-[#d99400]
 
-                max-[480px]:text-[10px]
+                max-[480px]:text-[14px]
               "
             >
-              CHOOSE COURSE
-            </label>
-
-            <select
-              id="course"
-              name="course"
-              value={formData.course}
-              onChange={handleChange}
-              className="
-                h-[42px]
-                w-full
-                cursor-pointer
-                rounded-[4px]
-                border
-                border-[#e8e8e8]
-                bg-white
-                px-[12px]
-                text-[12px]
-                text-[#333]
-                outline-none
-                transition
-
-                focus:border-[#f6a000]
-                focus:ring-2
-                focus:ring-[#f6a000]/10
-              "
-            >
-              <option value="">
-                Select a course
-              </option>
-
-              {courses.map((course) => (
-                <option
-                  key={course}
-                  value={course}
-                >
-                  {course}
-                </option>
-              ))}
-            </select>
-
-          </div>
-
-          {/* =================================================
-              STATE + CITY
-          ================================================== */}
-
-          <div
-            className="
-              grid
-              grid-cols-2
-              gap-x-[30px]
-
-              max-[600px]:grid-cols-1
-              max-[600px]:gap-x-0
-            "
-          >
-
-            {/* STATE */}
-
-            <div className="mb-[32px] w-full">
-
-              <label
-                htmlFor="state"
-                className="
-                  mb-[10px]
-                  block
-                  text-[11px]
-                  font-medium
-                  text-[#505050]
-
-                  max-[480px]:text-[10px]
-                "
-              >
-                STATE
-              </label>
-
-              <input
-                id="state"
-                name="state"
-                type="text"
-                value={formData.state}
-                onChange={handleChange}
-                className="
-                  h-[42px]
-                  w-full
-                  rounded-[4px]
-                  border
-                  border-[#e8e8e8]
-                  bg-white
-                  px-[12px]
-                  text-[12px]
-                  text-[#333]
-                  outline-none
-                  transition
-
-                  focus:border-[#f6a000]
-                  focus:ring-2
-                  focus:ring-[#f6a000]/10
-                "
-              />
-
+              Apply For A Job
             </div>
-
-            {/* CITY */}
-
-            <div className="mb-[32px] w-full">
-
-              <label
-                htmlFor="city"
-                className="
-                  mb-[10px]
-                  block
-                  text-[11px]
-                  font-medium
-                  text-[#505050]
-
-                  max-[480px]:text-[10px]
-                "
-              >
-                CITY
-              </label>
-
-              <input
-                id="city"
-                name="city"
-                type="text"
-                value={formData.city}
-                onChange={handleChange}
-                className="
-                  h-[42px]
-                  w-full
-                  rounded-[4px]
-                  border
-                  border-[#e8e8e8]
-                  bg-white
-                  px-[12px]
-                  text-[12px]
-                  text-[#333]
-                  outline-none
-                  transition
-
-                  focus:border-[#f6a000]
-                  focus:ring-2
-                  focus:ring-[#f6a000]/10
-                "
-              />
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              COURSE TYPE + OTHERS
-          ================================================== */}
-
-          <div
-            className="
-              grid
-              grid-cols-2
-              gap-x-[30px]
-
-              max-[600px]:grid-cols-1
-              max-[600px]:gap-x-0
-            "
-          >
-
-            {/* COURSE TYPE */}
-
-            <div className="mb-[32px] w-full">
-
-              <label
-                htmlFor="courseType"
-                className="
-                  mb-[10px]
-                  block
-                  text-[11px]
-                  font-medium
-                  text-[#505050]
-
-                  max-[480px]:text-[10px]
-                "
-              >
-                COURSE TYPE
-              </label>
-
-              <select
-                id="courseType"
-                name="courseType"
-                value={formData.courseType}
-                onChange={handleChange}
-                className="
-                  h-[42px]
-                  w-full
-                  cursor-pointer
-                  rounded-[4px]
-                  border
-                  border-[#e8e8e8]
-                  bg-white
-                  px-[12px]
-                  text-[12px]
-                  text-[#333]
-                  outline-none
-                  transition
-
-                  focus:border-[#f6a000]
-                  focus:ring-2
-                  focus:ring-[#f6a000]/10
-                "
-              >
-                <option value="">
-                  Select course type
-                </option>
-
-                <option value="Online">
-                  Online
-                </option>
-
-                <option value="Physical">
-                  Physical
-                </option>
-
-                <option value="Hybrid">
-                  Hybrid
-                </option>
-              </select>
-
-            </div>
-
-            {/* OTHERS */}
-
-            <div className="mb-[32px] w-full">
-
-              <label
-                htmlFor="others"
-                className="
-                  mb-[10px]
-                  block
-                  text-[11px]
-                  font-medium
-                  text-[#505050]
-
-                  max-[480px]:text-[10px]
-                "
-              >
-                OTHERS
-              </label>
-
-              <input
-                id="others"
-                name="others"
-                type="text"
-                value={formData.others}
-                onChange={handleChange}
-                className="
-                  h-[42px]
-                  w-full
-                  rounded-[4px]
-                  border
-                  border-[#e8e8e8]
-                  bg-white
-                  px-[12px]
-                  text-[12px]
-                  text-[#333]
-                  outline-none
-                  transition
-
-                  focus:border-[#f6a000]
-                  focus:ring-2
-                  focus:ring-[#f6a000]/10
-                "
-              />
-
-            </div>
-
-          </div>
-
-          {/* =================================================
-              WHY DO YOU WANT TO LEARN THIS COURSE?
-          ================================================== */}
-
-          <div className="mb-[25px] w-full">
-
-            <label
-              htmlFor="reason"
-              className="
-                mb-[10px]
-                block
-                text-[11px]
-                font-medium
-                text-[#505050]
-
-                max-[480px]:text-[10px]
-              "
-            >
-              WHY DO YOU WANT TO LEARN THIS COURSE?
-            </label>
 
             <p
               className="
-                mb-[12px]
-                text-[10px]
-                leading-[1.5]
+                max-w-[650px]
+                text-[14px]
+                leading-[1.7]
                 text-[#777]
 
-                max-[480px]:text-[9px]
+                max-[480px]:text-[13px]
               "
             >
-              The question is meant to help us understand why
-              you want this particular skill and to prepare you
-              better.
+              Fill in your details below to apply for the selected job.
+              Make sure your information is correct before submitting the
+              form.
             </p>
-
-            <textarea
-              id="reason"
-              name="reason"
-              value={formData.reason}
-              onChange={handleChange}
-              className="
-                block
-                h-[140px]
-                w-full
-                resize-none
-                rounded-[4px]
-                border
-                border-[#e8e8e8]
-                bg-white
-                p-[12px]
-                text-[12px]
-                text-[#333]
-                outline-none
-                transition
-
-                focus:border-[#f6a000]
-                focus:ring-2
-                focus:ring-[#f6a000]/10
-              "
-            />
-
           </div>
 
-          {/* =================================================
-              NOTICE
-          ================================================== */}
 
-          <p
-            className="
-              mb-[12px]
-              text-[10px]
-              leading-[1.5]
-              text-[#777]
+          {jobLoading && (
+            <div className="mb-[30px] rounded-[8px] border border-gray-100 bg-gray-50 p-[18px]">
+              <p className="text-[13px] text-gray-500">
+                Loading selected job...
+              </p>
+            </div>
+          )}
 
-              max-[480px]:text-[9px]
-            "
-          >
-            Submit your application for our course.
-            You should get back to you within 24 hours.
-          </p>
+          {!jobLoading && jobError && (
+            <div className="mb-[30px] rounded-[8px] border border-red-100 bg-red-50 p-[18px]">
+              <p className="text-[13px] text-red-500">
+                {jobError}
+              </p>
+            </div>
+          )}
 
-          {/* =================================================
-              SUBMIT BUTTON
-          ================================================== */}
+          {!jobLoading && !jobError && job && (
+            <div className="mb-[30px] rounded-[10px] border border-orange-100 bg-orange-50 p-[20px]">
+              <p className="text-[12px] font-semibold uppercase tracking-wide text-orange-500">
+                Applying For
+              </p>
 
-          <button
-            type="submit"
-            className="
-              h-[42px]
-              min-w-[100px]
-              rounded-[8px]
-              bg-[#f6a000]
-              px-[20px]
-              text-[12px]
-              font-medium
-              text-white
-              transition
-              duration-200
+              <h2 className="mt-[6px] text-[20px] font-semibold text-gray-900">
+                {job.title ||
+                  job.job_title ||
+                  "Untitled Position"}
+              </h2>
 
-              hover:bg-[#e99500]
-              active:scale-95
-            "
-          >
-            Submit
-          </button>
+              {job.company && (
+                <p className="mt-[5px] text-[14px] text-gray-500">
+                  {job.company}
+                </p>
+              )}
 
-        </form>
+              {job.location && (
+                <p className="mt-[3px] text-[13px] text-gray-400">
+                  {job.location}
+                </p>
+              )}
+            </div>
+          )}
 
-        {/* =================================================
-            BACK TO HOME
-        ================================================== */}
+
+          <form onSubmit={handleSubmit}>
+            {/* FULL NAME + EMAIL */}
+
+            <div
+              className="
+                grid
+                grid-cols-2
+                gap-x-[30px]
+
+                max-[600px]:grid-cols-1
+                max-[600px]:gap-x-0
+              "
+            >
+              {/* FULL NAME */}
+
+              <div className="mb-[28px] w-full">
+                <label
+                  htmlFor="fullName"
+                  className="
+                    mb-[9px]
+                    block
+                    text-[13px]
+                    font-semibold
+                    text-[#333]
+
+                    max-[480px]:text-[12px]
+                  "
+                >
+                  Full Name
+                </label>
+
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  placeholder="Enter your full name"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
+                  className="
+                    h-[48px]
+                    w-full
+                    rounded-[6px]
+                    border
+                    border-[#dcdcdc]
+                    bg-white
+                    px-[14px]
+                    text-[14px]
+                    text-[#333]
+                    placeholder:text-[#aaa]
+                    outline-none
+                    transition
+                    duration-200
+
+                    hover:border-[#c8c8c8]
+
+                    focus:border-[#f6a000]
+                    focus:ring-4
+                    focus:ring-[#f6a000]/10
+
+                    max-[480px]:h-[46px]
+                    max-[480px]:text-[13px]
+                  "
+                />
+              </div>
+
+              {/* EMAIL */}
+
+              <div className="mb-[28px] w-full">
+                <label
+                  htmlFor="email"
+                  className="
+                    mb-[9px]
+                    block
+                    text-[13px]
+                    font-semibold
+                    text-[#333]
+
+                    max-[480px]:text-[12px]
+                  "
+                >
+                  Email Address
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="
+                    h-[48px]
+                    w-full
+                    rounded-[6px]
+                    border
+                    border-[#dcdcdc]
+                    bg-white
+                    px-[14px]
+                    text-[14px]
+                    text-[#333]
+                    placeholder:text-[#aaa]
+                    outline-none
+                    transition
+                    duration-200
+
+                    hover:border-[#c8c8c8]
+
+                    focus:border-[#f6a000]
+                    focus:ring-4
+                    focus:ring-[#f6a000]/10
+
+                    max-[480px]:h-[46px]
+                    max-[480px]:text-[13px]
+                  "
+                />
+              </div>
+            </div>
+
+            <div
+              className="
+                grid
+                grid-cols-2
+                gap-x-[30px]
+
+                max-[600px]:grid-cols-1
+                max-[600px]:gap-x-0
+              "
+            >
+              {/* STATE */}
+
+              <div className="mb-[28px] w-full">
+                <label
+                  htmlFor="state"
+                  className="
+                    mb-[9px]
+                    block
+                    text-[13px]
+                    font-semibold
+                    text-[#333]
+
+                    max-[480px]:text-[12px]
+                  "
+                >
+                  State
+                </label>
+
+                <input
+                  id="state"
+                  name="state"
+                  type="text"
+                  placeholder="Enter your state"
+                  value={formData.state}
+                  onChange={handleChange}
+                  required
+                  className="
+                    h-[48px]
+                    w-full
+                    rounded-[6px]
+                    border
+                    border-[#dcdcdc]
+                    bg-white
+                    px-[14px]
+                    text-[14px]
+                    text-[#333]
+                    placeholder:text-[#aaa]
+                    outline-none
+                    transition
+                    duration-200
+
+                    hover:border-[#c8c8c8]
+
+                    focus:border-[#f6a000]
+                    focus:ring-4
+                    focus:ring-[#f6a000]/10
+
+                    max-[480px]:h-[46px]
+                    max-[480px]:text-[13px]
+                  "
+                />
+              </div>
+
+              {/* CITY */}
+
+              <div className="mb-[28px] w-full">
+                <label
+                  htmlFor="city"
+                  className="
+                    mb-[9px]
+                    block
+                    text-[13px]
+                    font-semibold
+                    text-[#333]
+
+                    max-[480px]:text-[12px]
+                  "
+                >
+                  City
+                </label>
+
+                <input
+                  id="city"
+                  name="city"
+                  type="text"
+                  placeholder="Enter your city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                  className="
+                    h-[48px]
+                    w-full
+                    rounded-[6px]
+                    border
+                    border-[#dcdcdc]
+                    bg-white
+                    px-[14px]
+                    text-[14px]
+                    text-[#333]
+                    placeholder:text-[#aaa]
+                    outline-none
+                    transition
+                    duration-200
+
+                    hover:border-[#c8c8c8]
+
+                    focus:border-[#f6a000]
+                    focus:ring-4
+                    focus:ring-[#f6a000]/10
+
+                    max-[480px]:h-[46px]
+                    max-[480px]:text-[13px]
+                  "
+                />
+              </div>
+            </div>
+
+            <div
+              className="
+                grid
+                grid-cols-2
+                gap-x-[30px]
+
+                max-[600px]:grid-cols-1
+                max-[600px]:gap-x-0
+              "
+            >
+
+
+              {/* OTHER INFORMATION */}
+
+              <div className="mb-[28px]  w-full">
+                <label
+                  htmlFor="others"
+                  className="
+                    mb-[9px]
+                    block
+                    text-[13px]
+                    font-semibold
+                    text-[#333]
+
+                    max-[480px]:text-[12px]
+                  "
+                >
+                  Other Information
+                </label>
+
+                <input
+                  id="others"
+                  name="others"
+                  type="text"
+                  placeholder="Any additional information"
+                  value={formData.others}
+                  onChange={handleChange}
+                  className="
+                    h-[48px]
+                    w-full
+                    rounded-[6px]
+                    border
+                    border-[#dcdcdc]
+                    bg-white
+                    px-[14px]
+                    text-[14px]
+                    text-[#333]
+                    placeholder:text-[#aaa]
+                    outline-none
+                    transition
+                    duration-200
+
+                    hover:border-[#c8c8c8]
+
+                    focus:border-[#f6a000]
+                    focus:ring-4
+                    focus:ring-[#f6a000]/10
+
+                    max-[480px]:h-[46px]
+                    max-[480px]:text-[13px]
+                  "
+                />
+              </div>
+            </div>
+
+
+            <div className="mb-[32px] w-full">
+              <label
+                htmlFor="reason"
+                className="
+                  mb-[9px]
+                  block
+                  text-[13px]
+                  font-semibold
+                  text-[#333]
+
+                  max-[480px]:text-[12px]
+                "
+              >
+                Tell us about yourself?
+              </label>
+
+              <textarea
+                id="reason"
+                name="reason"
+                value={formData.reason}
+                onChange={handleChange}
+                placeholder="Tell us briefly about yourself..."
+                rows="5"
+                className="
+                  w-full
+                  resize-none
+                  rounded-[6px]
+                  border
+                  border-[#dcdcdc]
+                  bg-white
+                  px-[14px]
+                  py-[13px]
+                  text-[14px]
+                  leading-[1.6]
+                  text-[#333]
+                  placeholder:text-[#aaa]
+                  outline-none
+                  transition
+                  duration-200
+
+                  hover:border-[#c8c8c8]
+
+                  focus:border-[#f6a000]
+                  focus:ring-4
+                  focus:ring-[#f6a000]/10
+
+                  max-[480px]:text-[13px]
+                "
+              />
+
+              <p
+                className="
+                  mb-[28px]
+                  text-[13px]
+                  leading-[1.6]
+                  text-[#777]
+                  max-[480px]:text-[12px]
+                "
+              >
+                Submit your application for our team to review. Our team
+                will get back to you within 24 hours.
+              </p>
+            </div>
+
+
+            <button
+              type="submit"
+              className="
+                h-[50px]
+                min-w-[140px]
+                rounded-[7px]
+                bg-[#f6a000]
+                px-[28px]
+                text-[14px]
+                font-semibold
+                text-white
+                shadow-[0_5px_15px_rgba(246,160,0,0.2)]
+                transition
+                duration-200
+                cursor-pointer
+                hover:bg-[#e99500]
+                hover:shadow-[0_7px_20px_rgba(246,160,0,0.3)]
+
+                active:scale-[0.98]
+
+                max-[480px]:h-[48px]
+                max-[480px]:w-full
+              "
+            >
+              Submit Application
+            </button>
+          </form>
+        </div>
 
         <a
           href="/"
           className="
             mx-auto
-            mt-[45px]
+            mt-[35px]
             block
             w-fit
-            text-[11px]
+            text-[13px]
             font-medium
             text-[#e9a51a]
             underline
+            underline-offset-4
             transition
             duration-200
+
             hover:text-[#d99400]
           "
         >
-          Back to home
+          ← Back to home
         </a>
-
       </main>
     </div>
   );

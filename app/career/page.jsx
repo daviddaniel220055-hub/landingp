@@ -16,9 +16,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-/* =========================================================
-   BENEFITS
-========================================================= */
 
 const benefits = [
   {
@@ -34,7 +31,7 @@ const benefits = [
     title: "EXPERT TRAINING\nPROGRAMS",
     description:
       "We offer a wide range of software development services, including website design, web development, app development, and more. Clients can rely on our experienced team to deliver solutions on time through the development process, from concept to launch.",
-    iconBg: "bg-orange-100",
+    iconBg: "bg-orange-100 mb-20",
     iconColor: "text-orange-500",
   },
   {
@@ -55,9 +52,6 @@ const benefits = [
   },
 ];
 
-/* =========================================================
-   APP
-========================================================= */
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -68,9 +62,6 @@ function App() {
 
   const jobsPerPage = 4;
 
-  /* =======================================================
-     GET API
-  ======================================================= */
 
   useEffect(() => {
     const getJobs = async () => {
@@ -96,27 +87,6 @@ function App() {
 
         console.log("API DATA:", data);
 
-        /*
-          Supports:
-
-          [
-            {...},
-            {...}
-          ]
-
-          or:
-
-          {
-            jobs: [...]
-          }
-
-          or:
-
-          {
-            data: [...]
-          }
-        */
-
         if (Array.isArray(data)) {
           setJobs(data);
         } else if (Array.isArray(data.jobs)) {
@@ -140,9 +110,6 @@ function App() {
     getJobs();
   }, []);
 
-  /* =======================================================
-     SEARCH
-  ======================================================= */
 
   const filteredJobs = jobs.filter((job) => {
     const search = searchTerm.toLowerCase().trim();
@@ -179,9 +146,6 @@ function App() {
     );
   });
 
-  /* =======================================================
-     PAGINATION
-  ======================================================= */
 
   const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
 
@@ -192,38 +156,29 @@ function App() {
     startIndex + jobsPerPage
   );
 
-  /* =======================================================
-     SEARCH HANDLER
-  ======================================================= */
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     setCurrentPage(1);
   };
 
-  /* =======================================================
-     APPLY
-  ======================================================= */
 
   const handleApply = (job) => {
-    alert(
-      `You are applying for:\n\n${job.title || job.job_title || "Untitled Position"}\n${
-        job.company || ""
-      }`
-    );
-  };
+    const jobId = job.id || job._id;
 
-  /* =======================================================
-     RETRY
-  ======================================================= */
+    if (!jobId) {
+      alert("Unable to find this job.");
+      return;
+    }
+
+
+    window.location.href = `/form?jobId=${jobId}`;
+  };
 
   const handleRetry = () => {
     window.location.reload();
   };
 
-  /* =======================================================
-     REQUIREMENTS
-  ======================================================= */
 
   const getRequirements = (requirements) => {
     if (!requirements) {
@@ -240,18 +195,11 @@ function App() {
       .filter(Boolean);
   };
 
-  /* =======================================================
-     UI
-  ======================================================= */
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-white text-[#111827]">
-      {/* =====================================================
-          HERO
-      ===================================================== */}
 
       <section className="relative min-h-[320px] overflow-hidden bg-gradient-to-r from-[#fff9e9] via-[#fffdf6] to-[#fceaf5] sm:min-h-[350px] md:min-h-[390px]">
-        {/* Decorative shapes */}
 
         <div className="absolute left-[5%] top-[130px] h-[90px] w-[90px] rotate-45 border border-[#f3e4c8] opacity-70 sm:h-[110px] sm:w-[110px]" />
 
@@ -265,10 +213,9 @@ function App() {
 
         <div className="absolute left-[74%] top-[80px] h-[32px] w-[32px] rotate-45 border border-[#f0e5cc] opacity-50" />
 
-        {/* Hero Content */}
 
         <div className="relative z-10 flex min-h-[320px] flex-col items-center justify-center px-6 text-center sm:min-h-[350px] md:min-h-[390px]">
-          <h1 className="mb-5 text-[42px] font-semibold tracking-[-1.5px] text-[#111] sm:text-[50px] md:text-[58px] lg:text-[64px]">
+          <h1 className="mb-5 text-[45px] font-Raleway font-bold tracking-[-1.5px] text-[#111] sm:text-[50px] md:text-[58px] lg:text-[64px]">
             Search For Job
           </h1>
 
@@ -282,14 +229,8 @@ function App() {
         </div>
       </section>
 
-      {/* =====================================================
-          MAIN
-      ===================================================== */}
 
       <main className="mx-auto w-full max-w-[1400px] px-6 pb-24 sm:px-8 md:px-12 lg:px-16">
-        {/* ===================================================
-            BENEFITS
-        =================================================== */}
 
         <section className="pt-[90px] sm:pt-[110px]">
           <div className="mb-12">
@@ -310,7 +251,6 @@ function App() {
             </p>
           </div>
 
-          {/* Benefits */}
 
           <div className="grid grid-cols-1 gap-x-16 gap-y-14 md:grid-cols-2">
             {benefits.map((benefit, index) => {
@@ -329,11 +269,11 @@ function App() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="whitespace-pre-line text-[18px] font-bold leading-[1.4] text-[#111] sm:text-[20px] md:text-[21px]">
+                    <h3 className="whitespace-pre-line text-[20px] font-Raleway font-semibold leading-[1.4] text-[#111] sm:text-[20px] md:text-[21px]">
                       {benefit.title}
                     </h3>
 
-                    <p className="mt-4 max-w-[550px] text-[14px] leading-[1.8] text-gray-500 sm:text-[15px] md:text-[16px]">
+                    <p className="mt-4 max-w-[550px] font-Poppins text-[14px] leading-[1.8] text-gray-500 sm:text-[15px] md:text-[16px]">
                       {benefit.description}
                     </p>
                   </div>
@@ -343,12 +283,7 @@ function App() {
           </div>
         </section>
 
-        {/* ===================================================
-            JOB SECTION
-        =================================================== */}
-
         <section className="mt-[110px] sm:mt-[130px]">
-          {/* Heading */}
 
           <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
             <div>
@@ -364,7 +299,6 @@ function App() {
               )}
             </div>
 
-            {/* Search */}
 
             <div className="flex w-full items-center gap-3 sm:w-auto">
               <div className="relative w-full sm:w-[300px] md:w-[340px]">
@@ -382,7 +316,6 @@ function App() {
                 />
               </div>
 
-              {/* Clear Search */}
 
               <button
                 type="button"
@@ -398,12 +331,7 @@ function App() {
             </div>
           </div>
 
-          {/* =================================================
-              JOB LIST
-          ================================================= */}
-
           <section className="mt-14">
-            {/* LOADING */}
 
             {loading && (
               <div className="flex flex-col items-center justify-center py-24">
@@ -415,7 +343,6 @@ function App() {
               </div>
             )}
 
-            {/* ERROR */}
 
             {!loading && error && (
               <div className="rounded-[12px] border border-red-100 bg-red-50 p-10 text-center">
@@ -437,7 +364,6 @@ function App() {
               </div>
             )}
 
-            {/* EMPTY */}
 
             {!loading && !error && filteredJobs.length === 0 && (
               <div className="rounded-[12px] border border-gray-100 bg-gray-50 p-12 text-center">
@@ -466,7 +392,6 @@ function App() {
               </div>
             )}
 
-            {/* JOBS */}
 
             {!loading && !error && currentJobs.length > 0 && (
               <div className="space-y-12">
@@ -478,10 +403,8 @@ function App() {
                       key={job.id || job._id || index}
                       className="grid grid-cols-1 gap-8 border-b border-gray-100 pb-12 md:grid-cols-[1fr_auto] md:items-center"
                     >
-                      {/* LEFT */}
 
                       <div>
-                        {/* TITLE */}
 
                         <h3 className="text-[23px] font-semibold text-gray-900 sm:text-[26px]">
                           {job.title ||
@@ -489,7 +412,6 @@ function App() {
                             "Untitled Position"}
                         </h3>
 
-                        {/* COMPANY / LOCATION / TYPE */}
 
                         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-500">
                           {job.company && (
@@ -526,7 +448,6 @@ function App() {
                           )}
                         </div>
 
-                        {/* DESCRIPTION */}
 
                         <p className="mt-5 max-w-[900px] text-[14px] leading-[1.8] text-gray-500 sm:text-[15px] md:text-[16px]">
                           {job.description ||
@@ -534,7 +455,6 @@ function App() {
                             "No job description available."}
                         </p>
 
-                        {/* REQUIREMENTS */}
 
                         {requirements.length > 0 && (
                           <div className="mt-5 flex flex-wrap gap-3">
@@ -563,7 +483,6 @@ function App() {
                           </div>
                         )}
 
-                        {/* SALARY */}
 
                         {job.salary && (
                           <div className="mt-5 flex items-center gap-2">
@@ -583,13 +502,12 @@ function App() {
                         )}
                       </div>
 
-                      {/* APPLY */}
 
                       <div>
                         <button
                           type="button"
                           onClick={() => handleApply(job)}
-                          className="w-full rounded-[7px] bg-orange-500 px-9 py-3.5 text-[14px] font-semibold text-white transition hover:bg-orange-600 hover:shadow-lg sm:w-fit"
+                          className="w-full rounded-[7px] bg-orange-500 cursor-pointer px-9 py-3.5 text-[14px] font-semibold text-white transition hover:bg-orange-600 hover:shadow-lg sm:w-fit"
                         >
                           Apply Now
                         </button>
@@ -600,24 +518,21 @@ function App() {
               </div>
             )}
 
-            {/* =================================================
-                PAGINATION
-            ================================================= */}
 
             {!loading && !error && totalPages > 1 && (
               <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
-                {/* PREVIOUS */}
 
                 <button
                   type="button"
                   disabled={currentPage === 1}
-                  onClick={() => setCurrentPage((page) => page - 1)}
+                  onClick={() =>
+                    setCurrentPage((page) => page - 1)
+                  }
                   className="flex h-11 w-11 items-center justify-center rounded-[7px] border border-gray-200 text-gray-500 transition hover:bg-orange-50 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   <ChevronLeft size={18} />
                 </button>
 
-                {/* PAGE NUMBERS */}
 
                 {Array.from(
                   { length: totalPages },
@@ -637,12 +552,13 @@ function App() {
                   </button>
                 ))}
 
-                {/* NEXT */}
 
                 <button
                   type="button"
                   disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage((page) => page + 1)}
+                  onClick={() =>
+                    setCurrentPage((page) => page + 1)
+                  }
                   className="flex h-11 w-11 items-center justify-center rounded-[7px] border border-gray-200 text-gray-500 transition hover:bg-orange-50 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   <ChevronRight size={18} />
@@ -652,13 +568,9 @@ function App() {
           </section>
         </section>
 
-        {/* =====================================================
-            CTA
-        ===================================================== */}
 
         <section className="mt-24 sm:mt-28">
           <div className="relative overflow-hidden rounded-[14px] bg-gradient-to-r from-fuchsia-600 to-pink-500 px-8 py-16 text-center text-white sm:px-12 md:py-20">
-            {/* Decorative circles */}
 
             <div className="absolute -left-16 -top-16 h-40 w-40 rounded-full bg-white/5" />
 
