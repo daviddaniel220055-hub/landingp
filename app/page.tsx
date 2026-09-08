@@ -1,5 +1,6 @@
 "use client";
-
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -1341,7 +1342,9 @@ function ConsultationBanner() {
 
       </div>
     </section>
+    
   );
+  
 }
 
 
@@ -1360,5 +1363,6 @@ export default function HomePage() {
       <Testimonials />
       <ConsultationBanner />
     </main>
+
   );
 }
