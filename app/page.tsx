@@ -1354,15 +1354,20 @@ function ConsultationBanner() {
 
 export default function HomePage() {
   return (
-    <main className="w-full overflow-hidden">
-      <Hero />
-      <About />
-      <Services />
-      <Technologies />
-      <MissionVision />
-      <Testimonials />
-      <ConsultationBanner />
-    </main>
+    <>
+      <Navbar />
 
+      <main className="w-full overflow-hidden">
+        <Hero />
+        <About />
+        <Services />
+        <Technologies />
+        <MissionVision />
+        <Testimonials />
+        <ConsultationBanner />
+      </main>
+
+      <Footer />
+    </>
   );
 }
