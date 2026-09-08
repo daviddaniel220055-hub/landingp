@@ -453,6 +453,13 @@ export default function Footer() {
               >
                 Post
               </Link>
+
+                <Link
+                href="/register"
+                className="block transition-colors duration-200 hover:text-[#111111]"
+              >
+                Form
+              </Link>
             </div>
           </motion.div>
         </motion.div>
