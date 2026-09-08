@@ -453,6 +453,13 @@ export default function Footer() {
               >
                 Post
               </Link>
+
+                <Link
+                href="/register"
+                className="block transition-colors duration-200 hover:text-[#111111]"
+              >
+                Form
+              </Link>
             </div>
           </motion.div>
         </motion.div>
@@ -478,7 +485,7 @@ export default function Footer() {
           }}
         >
           <p className="text-[11px] font-normal text-[#777777]">
-            Copyright © 2015 - 2023 | All Rights Reserved.
+            Copyright © {new Date().getFullYear()} | All Rights Reserved.
           </p>
         </motion.div>
 

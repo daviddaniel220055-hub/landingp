@@ -1,9 +1,100 @@
 "use client";
-
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import React from "react";
+import { motion } from "framer-motion";
 
 /* =========================================================
-    HERO
+   ANIMATION VARIANTS
+========================================================= */
+
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeLeft = {
+  hidden: {
+    opacity: 0,
+    x: -70,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const fadeRight = {
+  hidden: {
+    opacity: 0,
+    x: 70,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const scaleUp = {
+  hidden: {
+    opacity: 0,
+    scale: 0.8,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardAnimation = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+
+/* =========================================================
+   HERO
 ========================================================= */
 
 function Hero() {
@@ -12,21 +103,36 @@ function Hero() {
       id="home"
       className="relative min-h-screen overflow-hidden bg-white"
     >
-      {/* =====================================================
-          BACKGROUND GLOWS
-      ===================================================== */}
+      {/* BACKGROUND GLOWS */}
 
-      <div className="pointer-events-none absolute -left-[180px] -top-[120px] h-[500px] w-[550px] rounded-full bg-[#f9e7fa] opacity-80 blur-[100px]" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.7 }}
+        animate={{
+          opacity: 0.8,
+          scale: 1,
+        }}
+        transition={{
+          duration: 1.5,
+          ease: "easeOut",
+        }}
+        className="pointer-events-none absolute -left-[180px] -top-[120px] h-[500px] w-[550px] rounded-full bg-[#f9e7fa] blur-[100px]"
+      />
 
-      <div className="pointer-events-none absolute -bottom-[180px] -right-[150px] h-[500px] w-[550px] rounded-full bg-[#f5ddf7] opacity-70 blur-[110px]" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.7 }}
+        animate={{
+          opacity: 0.7,
+          scale: 1,
+        }}
+        transition={{
+          duration: 1.5,
+          delay: 0.3,
+          ease: "easeOut",
+        }}
+        className="pointer-events-none absolute -bottom-[180px] -right-[150px] h-[500px] w-[550px] rounded-full bg-[#f5ddf7] blur-[110px]"
+      />
 
-      {/* =====================================================
-          HERO CONTENT
-
-          Navbar is fixed at 100px.
-          We only add padding inside the hero content,
-          instead of reducing the Hero height.
-      ===================================================== */}
+      {/* HERO CONTENT */}
 
       <div
         className="
@@ -46,13 +152,16 @@ function Hero() {
       >
         <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
-          {/* =================================================
-              LEFT SIDE
-          ================================================= */}
+          {/* LEFT SIDE */}
 
-          <div className="max-w-[560px]">
-
-            <h1
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            animate="visible"
+            className="max-w-[560px]"
+          >
+            <motion.h1
+              variants={fadeLeft}
               className="
                 text-[42px]
                 font-bold
@@ -68,9 +177,10 @@ function Hero() {
               Software Development
               <br />
               Company
-            </h1>
+            </motion.h1>
 
-            <p
+            <motion.p
+              variants={fadeUp}
               className="
                 mt-6
                 max-w-[540px]
@@ -84,15 +194,22 @@ function Hero() {
               Sales Through The Help Of Technologies. You’ve Got An
               Idea? Bring It Up, Our Skilled Engineers Will Turn It To A Live
               Product.
-            </p>
+            </motion.p>
 
-            <button
+            <motion.button
               type="button"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 10px 25px rgba(246,160,0,0.25)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               className="
                 mt-7
                 flex
                 h-[52px]
-                w-[315px]
+                w-full
+                max-w-[315px]
                 items-center
                 justify-center
                 gap-3
@@ -103,24 +220,34 @@ function Hero() {
                 text-white
               "
             >
-              <span>
-                Book A Free Consultation
-              </span>
+              <span>Book A Free Consultation</span>
 
-              <span className="text-[27px] leading-none">
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                }}
+                className="text-[27px] leading-none"
+              >
                 ↗
-              </span>
-            </button>
+              </motion.span>
+            </motion.button>
+          </motion.div>
 
-          </div>
+          {/* RIGHT SIDE */}
 
-          {/* =================================================
-              RIGHT SIDE
-          ================================================= */}
-
-          <div className="flex justify-center lg:justify-end">
-
-            <div
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            animate="visible"
+            className="flex justify-center lg:justify-end"
+          >
+            <motion.div
+              whileHover={{
+                scale: 1.02,
+              }}
+              transition={{ duration: 0.3 }}
               className="
                 w-full
                 max-w-[520px]
@@ -130,8 +257,9 @@ function Hero() {
                 border-[#c52db4]
               "
             >
-
-              <img
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.5 }}
                 src="/images/hero.png"
                 alt="Software development"
                 className="
@@ -142,19 +270,22 @@ function Hero() {
                   lg:h-[385px]
                 "
               />
-
-            </div>
-
-          </div>
+            </motion.div>
+          </motion.div>
 
         </div>
       </div>
 
-      {/* =====================================================
-          CLIENT LOGOS
-      ===================================================== */}
+      {/* CLIENT LOGOS */}
 
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8 }}
         className="
           relative
           flex
@@ -164,68 +295,58 @@ function Hero() {
           bg-[#fff9df]
         "
       >
-
-        <div
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
           className="
             mx-auto
-            flex
+            grid
             w-full
             max-w-[1050px]
+            grid-cols-2
             items-center
-            justify-between
-            gap-10
+            justify-items-center
+            gap-8
             px-8
+            sm:grid-cols-3
+            lg:flex
+            lg:justify-between
           "
         >
-
-          <img
-            src="/images/Matmos logo.png"
-            alt="Matmos"
-            className="max-h-[42px] w-auto object-contain"
-          />
-
-          <img
-            src="/images/ALPHABILLS STRAIGHT.png"
-            alt="Alphabills"
-            className="max-h-[38px] w-auto object-contain"
-          />
-
-          <img
-            src="/images/adalo.png"
-            alt="TismaBit"
-            className="max-h-[35px] w-auto object-contain"
-          />
-
-          <img
-            src="/images/airrand.png"
-            alt="AirRand"
-            className="max-h-[45px] w-auto object-contain"
-          />
-
-          <img
-            src="/images/paytonaira.png"
-            alt="Paytonaira"
-            className="max-h-[38px] w-auto object-contain"
-          />
-
-        </div>
-
-      </div>
+          {[
+            ["/images/Matmos logo.png", "Matmos", "max-h-[42px]"],
+            ["/images/ALPHABILLS STRAIGHT.png", "Alphabills", "max-h-[38px]"],
+            ["/images/adalo.png", "TismaBit", "max-h-[35px]"],
+            ["/images/airrand.png", "AirRand", "max-h-[45px]"],
+            ["/images/paytonaira.png", "Paytonaira", "max-h-[38px]"],
+          ].map(([src, alt, height]) => (
+            <motion.img
+              key={alt}
+              variants={scaleUp}
+              whileHover={{
+                scale: 1.1,
+              }}
+              src={src}
+              alt={alt}
+              className={`${height} w-auto object-contain`}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
 
 
 /* =========================================================
-    ABOUT
+   ABOUT
 ========================================================= */
 
 function About() {
   return (
-    <section
-      id="about"
-      className="bg-white"
-    >
+    <section id="about" className="bg-white">
 
       <div
         className="
@@ -256,9 +377,18 @@ function About() {
 
           {/* IMAGE */}
 
-          <div className="flex justify-center lg:justify-start">
-
-            <img
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex justify-center lg:justify-start"
+          >
+            <motion.img
+              whileHover={{
+                scale: 1.04,
+              }}
+              transition={{ duration: 0.4 }}
               src="/images/Rectangle 86.png"
               alt="Joshconsult team"
               className="
@@ -269,14 +399,18 @@ function About() {
                 object-cover
               "
             />
-
-          </div>
+          </motion.div>
 
 
           {/* TEXT */}
 
-          <div className="max-w-[500px]">
-
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="max-w-[500px]"
+          >
             <p className="text-[14px] font-medium text-[#f2a000]">
               About
             </p>
@@ -310,7 +444,13 @@ function About() {
               To Tech Careers.
             </p>
 
-            <button
+            <motion.button
+              whileHover={{
+                scale: 1.08,
+              }}
+              whileTap={{
+                scale: 0.95,
+              }}
               type="button"
               className="
                 mt-7
@@ -324,12 +464,11 @@ function About() {
               "
             >
               Learn More
-            </button>
+            </motion.button>
 
-          </div>
+          </motion.div>
 
         </div>
-
       </div>
 
     </section>
@@ -338,7 +477,7 @@ function About() {
 
 
 /* =========================================================
-    SERVICES
+   SERVICES
 ========================================================= */
 
 const services = [
@@ -379,33 +518,44 @@ function Services() {
         "
       >
 
-        <p className="text-[14px] font-medium text-[#f2a000]">
-          Services
-        </p>
-
-        <h2 className="mt-4 text-[34px] font-medium text-black">
-          Our Services
-        </h2>
-
-        <p
-          className="
-            mt-4
-            max-w-[650px]
-            text-[13px]
-            leading-[1.6]
-            text-[#777777]
-          "
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          We help small, medium and large businesses transform their sales
-          and increase ROI through our versatile software development and
-          digital marketing team. We work closely with you to deliver what
-          your audience would love to consume.
-        </p>
+          <p className="text-[14px] font-medium text-[#f2a000]">
+            Services
+          </p>
+
+          <h2 className="mt-4 text-[34px] font-medium text-black">
+            Our Services
+          </h2>
+
+          <p
+            className="
+              mt-4
+              max-w-[650px]
+              text-[13px]
+              leading-[1.6]
+              text-[#777777]
+            "
+          >
+            We help small, medium and large businesses transform their sales
+            and increase ROI through our versatile software development and
+            digital marketing team. We work closely with you to deliver what
+            your audience would love to consume.
+          </p>
+        </motion.div>
 
 
         {/* CARDS */}
 
-        <div
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="
             mt-12
             grid
@@ -416,8 +566,14 @@ function Services() {
         >
 
           {services.map((service) => (
-            <div
+            <motion.div
               key={service.title}
+              variants={cardAnimation}
+              whileHover={{
+                y: -10,
+                boxShadow: "0px 15px 35px rgba(0,0,0,0.08)",
+              }}
+              transition={{ duration: 0.3 }}
               className="
                 flex
                 min-h-[285px]
@@ -433,7 +589,14 @@ function Services() {
 
               {/* ICON */}
 
-              <div
+              <motion.div
+                whileHover={{
+                  rotate: 360,
+                  scale: 1.1,
+                }}
+                transition={{
+                  duration: 0.6,
+                }}
                 className="
                   flex
                   h-[48px]
@@ -447,7 +610,7 @@ function Services() {
                 "
               >
                 ◉
-              </div>
+              </motion.div>
 
               <h3 className="mt-7 text-[13px] font-bold text-black">
                 {service.title}
@@ -465,7 +628,15 @@ function Services() {
                 {service.description}
               </p>
 
-              <button
+              <motion.button
+                whileHover={{
+                  scale: 1.06,
+                  backgroundColor: "#c83db6",
+                  color: "#ffffff",
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
                 type="button"
                 className="
                   mt-auto
@@ -481,19 +652,31 @@ function Services() {
                 "
               >
                 Learn More
-              </button>
+              </motion.button>
 
-            </div>
+            </motion.div>
           ))}
 
-        </div>
+        </motion.div>
 
 
         {/* VIEW ALL SERVICES */}
 
-        <div className="flex justify-end">
-
-          <button
+        <motion.div
+          variants={fadeRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex justify-end"
+        >
+          <motion.button
+            whileHover={{
+              scale: 1.08,
+              x: -5,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
             type="button"
             className="
               mt-10
@@ -507,19 +690,17 @@ function Services() {
             "
           >
             View All Services
-          </button>
-
-        </div>
+          </motion.button>
+        </motion.div>
 
       </div>
-
     </section>
   );
 }
 
 
 /* =========================================================
-    TECHNOLOGIES
+   TECHNOLOGIES
 ========================================================= */
 
 const technologies = [
@@ -585,8 +766,13 @@ function Technologies() {
 
         {/* HEADING */}
 
-        <div className="text-center">
-
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center"
+        >
           <h2 className="text-[34px] font-medium text-black">
             Technologies We’re Using
           </h2>
@@ -595,13 +781,16 @@ function Technologies() {
             Below is the list of technologies we are using for our
             professional services
           </p>
-
-        </div>
+        </motion.div>
 
 
         {/* TECHNOLOGY GRID */}
 
-        <div
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="
             mx-auto
             mt-16
@@ -614,8 +803,12 @@ function Technologies() {
         >
 
           {technologies.map((technology) => (
-            <div
+            <motion.div
               key={technology.name}
+              variants={cardAnimation}
+              whileHover={{
+                y: -8,
+              }}
               className="
                 flex
                 flex-col
@@ -624,7 +817,14 @@ function Technologies() {
               "
             >
 
-              <div
+              <motion.div
+                whileHover={{
+                  scale: 1.15,
+                  rotate: 5,
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
                 className="
                   flex
                   h-[65px]
@@ -633,7 +833,6 @@ function Technologies() {
                   justify-center
                 "
               >
-
                 <img
                   src={technology.image}
                   alt={technology.name}
@@ -643,8 +842,7 @@ function Technologies() {
                     object-contain
                   "
                 />
-
-              </div>
+              </motion.div>
 
               <p
                 className="
@@ -658,20 +856,19 @@ function Technologies() {
                 {technology.name}
               </p>
 
-            </div>
+            </motion.div>
           ))}
 
-        </div>
+        </motion.div>
 
       </div>
-
     </section>
   );
 }
 
 
 /* =========================================================
-    MISSION + VISION
+   MISSION + VISION
 ========================================================= */
 
 function MissionVision() {
@@ -680,6 +877,7 @@ function MissionVision() {
       id="career"
       className="bg-white"
     >
+
       <div
         className="
           mx-auto
@@ -694,6 +892,7 @@ function MissionVision() {
           xl:px-0
         "
       >
+
         <div
           className="
             grid
@@ -705,8 +904,16 @@ function MissionVision() {
             lg:gap-24
           "
         >
-          {/* Top-Left: Mission Text */}
-          <div className="max-w-[500px]">
+
+          {/* MISSION TEXT */}
+
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="max-w-[500px]"
+          >
             <p className="text-[14px] font-medium text-[#f2a000]">
               Mission
             </p>
@@ -729,11 +936,21 @@ function MissionVision() {
               satisfaction, global impact, social responsibility, agility and
               quality excellent.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Top-Right: Mission Image */}
-          <div className="flex justify-center lg:justify-end">
-            <img
+
+          {/* MISSION IMAGE */}
+
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex justify-center lg:justify-end"
+          >
+            <motion.img
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.4 }}
               src="/images/Rectangle.png"
               alt="Mission"
               className="
@@ -744,11 +961,21 @@ function MissionVision() {
                 object-cover
               "
             />
-          </div>
+          </motion.div>
 
-          {/* Bottom-Left: Vision Image */}
-          <div className="flex justify-center lg:justify-start">
-            <img
+
+          {/* VISION IMAGE */}
+
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="flex justify-center lg:justify-start"
+          >
+            <motion.img
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.4 }}
               src="/images/vision.png"
               alt="Vision"
               className="
@@ -759,10 +986,18 @@ function MissionVision() {
                 object-cover
               "
             />
-          </div>
+          </motion.div>
 
-          {/* Bottom-Right: Vision Text */}
-          <div className="max-w-[500px]">
+
+          {/* VISION TEXT */}
+
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="max-w-[500px]"
+          >
             <p className="text-[14px] font-medium text-[#f2a000]">
               Vision
             </p>
@@ -786,16 +1021,18 @@ function MissionVision() {
               cutting-edge software solutions that enhance efficiency,
               foster creativity, and elevate the human experience.
             </p>
-          </div>
+          </motion.div>
+
         </div>
       </div>
+
     </section>
   );
 }
 
 
 /* =========================================================
-    TESTIMONIALS
+   TESTIMONIALS
 ========================================================= */
 
 const testimonials = [
@@ -817,6 +1054,7 @@ function Testimonials() {
       id="contact"
       className="bg-[#fff9e3]"
     >
+
       <div
         className="
           mx-auto
@@ -827,8 +1065,16 @@ function Testimonials() {
           py-20
         "
       >
+
         {/* HEADING */}
-        <div className="text-center">
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center"
+        >
           <h2 className="text-[30px] font-medium text-black">
             What People Are Saying
           </h2>
@@ -846,10 +1092,16 @@ function Testimonials() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Eget aenean accumsan bibendum gravida maecenas augue.
           </p>
-        </div>
+        </motion.div>
+
 
         {/* TESTIMONIAL CARDS */}
-        <div
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
           className="
             mx-auto
             mt-14
@@ -860,9 +1112,15 @@ function Testimonials() {
             md:grid-cols-2
           "
         >
+
           {testimonials.map((testimonial) => (
-            <div
+            <motion.div
               key={testimonial.name}
+              variants={cardAnimation}
+              whileHover={{
+                y: -8,
+                boxShadow: "0px 15px 30px rgba(0,0,0,0.07)",
+              }}
               className="
                 min-h-[205px]
                 rounded-[12px]
@@ -871,7 +1129,11 @@ function Testimonials() {
                 py-8
               "
             >
-              <img
+
+              <motion.img
+                whileHover={{
+                  scale: 1.12,
+                }}
                 src={testimonial.image}
                 alt={testimonial.name}
                 className="
@@ -897,12 +1159,20 @@ function Testimonials() {
               >
                 {testimonial.text}
               </p>
-            </div>
+
+            </motion.div>
           ))}
-        </div>
+
+        </motion.div>
+
 
         {/* BOTTOM CONTROLS */}
-        <div
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
           className="
             mx-auto
             mt-10
@@ -912,12 +1182,24 @@ function Testimonials() {
             justify-between
           "
         >
+
           <div className="flex gap-1">
-            <span className="h-[11px] w-[11px] rounded-full bg-[#f6a000]" />
+            <motion.span
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+              }}
+              className="h-[11px] w-[11px] rounded-full bg-[#f6a000]"
+            />
+
             <span className="h-[11px] w-[11px] rounded-full bg-[#f4d99d]" />
           </div>
 
-          <a
+          <motion.a
+            whileHover={{
+              x: 5,
+            }}
             href="#contact"
             className="
               text-[12px]
@@ -927,8 +1209,10 @@ function Testimonials() {
             "
           >
             View All Reviews
-          </a>
-        </div>
+          </motion.a>
+
+        </motion.div>
+
       </div>
     </section>
   );
@@ -936,14 +1220,20 @@ function Testimonials() {
 
 
 /* =========================================================
-    CONSULTATION BANNER (Updated with exact text & arrow button from a9_2.jpg)
+   CONSULTATION BANNER
 ========================================================= */
 
 function ConsultationBanner() {
   return (
     <section className="bg-white py-20">
+
       <div className="mx-auto max-w-[1180px] px-8 lg:px-12 xl:px-0">
-        <div
+
+        <motion.div
+          variants={scaleUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="
             relative
             mx-auto
@@ -959,11 +1249,41 @@ function ConsultationBanner() {
             sm:px-16
           "
         >
-          <h2 className="text-[24px] font-medium text-black sm:text-[30px]">
-            Schedule A 30 Minutes Project Consultation!
-          </h2>
 
-          <p
+          {/* DECORATIVE FLOATING EFFECT */}
+
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+              rotate: [0, 5, 0],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 4,
+              ease: "easeInOut",
+            }}
+            className="
+              pointer-events-none
+              absolute
+              -right-4
+              -top-4
+              h-10
+              w-10
+              rounded-full
+              bg-[#c83db6]
+              opacity-20
+            "
+          />
+
+          <motion.h2
+            variants={fadeUp}
+            className="text-[24px] font-medium text-black sm:text-[30px]"
+          >
+            Schedule A 30 Minutes Project Consultation!
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
             className="
               mt-4
               max-w-[620px]
@@ -973,19 +1293,27 @@ function ConsultationBanner() {
               sm:text-[13px]
             "
           >
-            Are you a business owner, having low revenue or looking forward to increase
-            your online sales? Worry no more!
+            Are you a business owner, having low revenue or looking forward
+            to increase your online sales? Worry no more!
             <br />
             Our skilled engineers are ready to transform your buesiness
-          </p>
+          </motion.p>
 
-          <button
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 10px 25px rgba(200,61,182,0.25)",
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
             type="button"
             className="
               mt-8
               flex
               h-[52px]
-              w-[270px]
+              w-full
+              max-w-[270px]
               items-center
               justify-between
               rounded-[9px]
@@ -998,20 +1326,30 @@ function ConsultationBanner() {
           >
             <span>Book a free consultation</span>
 
-            {/* Right Arrow Icon matching image a9_2.jpg */}
-            <span className="text-[20px] leading-none">
+            <motion.span
+              animate={{ x: [0, 5, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.4,
+              }}
+              className="text-[20px] leading-none"
+            >
               ➔
-            </span>
-          </button>
-        </div>
+            </motion.span>
+          </motion.button>
+
+        </motion.div>
+
       </div>
     </section>
+    
   );
+  
 }
 
 
 /* =========================================================
-    PAGE
+   PAGE
 ========================================================= */
 
 export default function HomePage() {
@@ -1025,5 +1363,6 @@ export default function HomePage() {
       <Testimonials />
       <ConsultationBanner />
     </main>
+
   );
 }

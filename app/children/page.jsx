@@ -12,7 +12,7 @@ const App = () => {
 
         <div className="relative mt-20 mx-auto max-w-6xl text-center">
 
-          <h1 className="text-2xl font-bold leading-tight md:text-6xl">
+          <h1 className="text-[45px] font-Raleway font-bold leading-tight md:text-6xl">
             All Courses For Students
           </h1>
 
@@ -34,7 +34,7 @@ const App = () => {
             Benefits
           </p>
 
-          <h2 className="mt-2 text-3xl font-bold md:text-4xl">
+          <h2 className="mt-2 text-[40px] font-Raleway font-semibold md:text-4xl">
             Best Place To Learn Growth
           </h2>
 
@@ -49,7 +49,7 @@ const App = () => {
             <div className="rounded-xl border border-gray-100 bg-white p-7 text-center shadow-sm">
 
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-purple-50 text-2xl text-purple-500">
-                ✦
+                <img className="h-8" src="/first.png" alt="" />
               </div>
 
               <h3 className="mt-5 text-sm font-bold md:text-base">
@@ -67,7 +67,7 @@ const App = () => {
             <div className="rounded-xl border border-gray-100 bg-white p-7 text-center shadow-sm">
 
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-orange-50 text-2xl text-orange-400">
-                ◇
+                <img className="h-8" src="/second.png" alt="" />
               </div>
 
               <h3 className="mt-5 text-sm font-bold md:text-base">
@@ -85,7 +85,7 @@ const App = () => {
             <div className="rounded-xl border border-gray-100 bg-white p-7 text-center shadow-sm">
 
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-orange-50 text-2xl text-orange-400">
-                ✧
+                <img className="h-8" src="/third.png" alt="" />
               </div>
 
               <h3 className="mt-5 text-sm font-bold md:text-base">
@@ -103,7 +103,7 @@ const App = () => {
             <div className="rounded-xl border border-gray-100 bg-white p-7 text-center shadow-sm">
 
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-purple-50 text-2xl text-purple-500">
-                ✦
+                <img className="h-8" src="/fourth.png" alt="" />
               </div>
 
               <h3 className="mt-5 text-sm font-bold md:text-base">
@@ -132,7 +132,7 @@ const App = () => {
             All Courses
           </p>
 
-          <h2 className="mt-2 pl-16 text-3xl font-bold md:text-4xl">
+          <h2 className="mt-2 pl-16 text-[40px] font-Raleway font-semibold md:text-4xl">
             Available Courses
           </h2>
 
@@ -171,11 +171,11 @@ const App = () => {
 
                 <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-500">
 
-                  <span>⌁ 5 HRS</span>
-                  <span>◉ 2</span>
-                  <span>◈ Beginner</span>
-                  <span>★ 4.8</span>
-                  <span>▣ Certificate</span>
+                  <span className="text-black font-semibold text-[13px]">● HTML</span>
+                  <span className="text-black font-semibold text-[13px]">● CSS</span>
+                  <span className="text-black font-semibold text-[13px]">● Javascript</span>
+                  <span className="text-black font-semibold text-[13px]">● React JS</span>
+                  <span className="text-black font-semibold text-[13px]">● Tailwind CSS</span>
 
                 </div>
 
@@ -184,8 +184,8 @@ const App = () => {
 
                   <div className="flex flex-wrap gap-5 text-sm text-gray-500">
 
-                    <span>● 6 of 8 modules</span>
-                    <span>● Bootcamp</span>
+                  <span className="text-black font-semibold text-[13px]">● GIT & GITHUB</span>
+                  <span className="text-black font-semibold text-[13px]">● Bootsrap</span>
 
                   </div>
 
@@ -228,11 +228,11 @@ const App = () => {
 
                 <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-500">
 
-                  <span>⌁ 5 HRS</span>
-                  <span>◉ 2</span>
-                  <span>◈ Beginner</span>
-                  <span>★ 4.8</span>
-                  <span>▣ Certificate</span>
+                  <span className="text-black font-semibold text-[13px]">● HTML</span>
+                  <span className="text-black font-semibold text-[13px]">● CSS</span>
+                  <span className="text-black font-semibold text-[13px]">● Javascript</span>
+                  <span className="text-black font-semibold text-[13px]">● React JS</span>
+                  <span className="text-black font-semibold text-[13px]">● Tailwind CSS</span>
 
                 </div>
 
@@ -241,8 +241,8 @@ const App = () => {
 
                   <div className="flex flex-wrap gap-5 text-sm text-gray-500">
 
-                    <span>● 6 of 8 modules</span>
-                    <span>● Bootcamp</span>
+                  <span className="text-black font-semibold text-[13px]">● GIT & GITHUB</span>
+                  <span className="text-black font-semibold text-[13px]">● Bootsrap</span>
 
                   </div>
 
@@ -285,12 +285,11 @@ const App = () => {
 
                 <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-500">
 
-                  <span>⌁ 5 HRS</span>
-                  <span>◉ 2</span>
-                  <span>◈ Beginner</span>
-                  <span>★ 4.8</span>
-                  <span>▣ Certificate</span>
-
+                  <span className="text-black font-semibold text-[13px]">● HTML</span>
+                  <span className="text-black font-semibold text-[13px]">● CSS</span>
+                  <span className="text-black font-semibold text-[13px]">● Javascript</span>
+                  <span className="text-black font-semibold text-[13px]">● React JS</span>
+                  <span className="text-black font-semibold text-[13px]">● Tailwind CSS</span>
                 </div>
 
 
@@ -298,9 +297,8 @@ const App = () => {
 
                   <div className="flex flex-wrap gap-5 text-sm text-gray-500">
 
-                    <span>● 6 of 8 modules</span>
-                    <span>● Bootcamp</span>
-
+                  <span className="text-black font-semibold text-[13px]">● GIT & GITHUB</span>
+                  <span className="text-black font-semibold text-[13px]">● Bootsrap</span>
                   </div>
 
 
@@ -342,21 +340,21 @@ const App = () => {
 
                 <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-500">
 
-                  <span>⌁ 5 HRS</span>
-                  <span>◉ 2</span>
-                  <span>◈ Beginner</span>
-                  <span>★ 4.8</span>
-                  <span>▣ Certificate</span>
+                  <span className="text-black font-semibold text-[13px]">● HTML</span>
+                  <span className="text-black font-semibold text-[13px]">● CSS</span>
+                  <span className="text-black font-semibold text-[13px]">● Javascript</span>
+                  <span className="text-black font-semibold text-[13px]">● React JS</span>
+                  <span className="text-black font-semibold text-[13px]">● Tailwind CSS</span>
 
                 </div>
 
 
-                <div className="mt-7 flex flex-wrap items-center gap-5">
+                <div className=" flex flex-wrap items-center gap-5">
 
                   <div className="flex flex-wrap gap-5 text-sm text-gray-500">
 
-                    <span>● 6 of 8 modules</span>
-                    <span>● Bootcamp</span>
+                    <span className="text-black font-semibold text-[13px]">● GIT & GITHUB</span>
+                    <span className="text-black font-semibold text-[13px]">● Bootsrap</span>
 
                   </div>
 
@@ -375,19 +373,6 @@ const App = () => {
 
 
           <div className="mt-10 flex justify-center gap-3">
-
-            <button className="h-10 w-10 rounded-lg bg-purple-600 text-sm font-semibold text-white">
-              1
-            </button>
-
-            <button className="h-10 w-10 rounded-lg text-sm font-semibold text-orange-400">
-              2
-            </button>
-
-            <button className="h-10 w-10 rounded-lg text-sm font-semibold text-orange-400">
-              3
-            </button>
-
           </div>
 
         </div>
@@ -416,7 +401,7 @@ const App = () => {
               <div className="flex items-center gap-4">
 
                 <img
-                  src="https://i.pravatar.cc/100?img=12"
+                  src="/ib.png"
                   alt="Student"
                   className="h-12 w-12 rounded-full object-cover"
                 />
@@ -424,12 +409,8 @@ const App = () => {
                 <div>
 
                   <h3 className="text-sm font-bold">
-                    MICHAEL JOHNSON
+                    IBRAHIM OMOTOSHO
                   </h3>
-
-                  <p className="mt-1 text-xs text-gray-400">
-                    Student
-                  </p>
 
                 </div>
 
@@ -448,7 +429,7 @@ const App = () => {
               <div className="flex items-center gap-4">
 
                 <img
-                  src="https://i.pravatar.cc/100?img=47"
+                  src="/mo.png"
                   alt="Student"
                   className="h-12 w-12 rounded-full object-cover"
                 />
@@ -456,12 +437,9 @@ const App = () => {
                 <div>
 
                   <h3 className="text-sm font-bold">
-                    SOPHIE MAXWELL
+                     KOREDE MOHAMMED
                   </h3>
 
-                  <p className="mt-1 text-xs text-gray-400">
-                    Student
-                  </p>
 
                 </div>
 
@@ -473,26 +451,6 @@ const App = () => {
               </p>
 
             </div>
-
-          </div>
-
-
-          <div className="mt-10 flex justify-center gap-2">
-
-            <span className="h-2 w-2 rounded-full bg-orange-400"></span>
-
-            <span className="h-2 w-2 rounded-full bg-gray-300"></span>
-
-            <span className="h-2 w-2 rounded-full bg-gray-300"></span>
-
-          </div>
-
-
-          <div className="mt-6 text-center">
-
-            <span className="text-sm font-semibold text-purple-600">
-              View All Reviews
-            </span>
 
           </div>
 
