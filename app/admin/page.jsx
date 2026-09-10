@@ -14,7 +14,7 @@ export default function AdminPage() {
   const login = useAuthStore((state) => state.login);
 
   const redirectTo =
-    searchParams.get("redirect") || "/dashboard";
+    searchParams.get("redirect") || "admin/dashboard";
 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");

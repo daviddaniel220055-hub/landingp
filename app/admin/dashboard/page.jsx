@@ -394,7 +394,7 @@ export default function AdminDashboardPage() {
               rounded-full
               border-[4px]
               border-[#eeeeee]
-              border-t-[#ff9900]
+              border-t-[#C026D3]
             "
           />
           <p className="mt-[15px] text-[12px] text-[#777777]">
@@ -416,7 +416,7 @@ export default function AdminDashboardPage() {
      DASHBOARD WITH SIDEBAR
   ========================================================= */
   return (
-    <div className="flex min-h-screen w-full bg-[#f8f8f8]">
+    <div className="flex min-h-screen w-full bg-[#faf7ff]">
       {/* =====================================================
           SIDEBAR OVERLAY (Mobile)
       ===================================================== */}
@@ -428,7 +428,7 @@ export default function AdminDashboardPage() {
       )}
 
       {/* =====================================================
-          SIDEBAR
+          SIDEBAR - LIGHT PURPLE THEME
       ===================================================== */}
       <aside
         className={`
@@ -438,7 +438,7 @@ export default function AdminDashboardPage() {
           z-50
           h-full
           w-[280px]
-          bg-white
+          bg-[#FDF4FF]
           shadow-xl
           transition-transform
           duration-300
@@ -448,7 +448,7 @@ export default function AdminDashboardPage() {
         `}
       >
         {/* Sidebar Header */}
-        <div className="flex h-[80px] items-center border-b border-[#eeeeee] px-[24px]">
+        <div className="flex h-[80px] items-center border-b border-[#F3D8FF] px-[24px]">
           <Link href="/admin" className="block h-[50px] w-[90px] shrink-0">
             <Image
               src="/images/logo.png"
@@ -461,9 +461,9 @@ export default function AdminDashboardPage() {
           </Link>
         </div>
 
-        {/* Sidebar Navigation */}
+        {/* Sidebar Navigation - LIGHT PURPLE THEME */}
         <nav className="mt-[30px] px-[16px]">
-          {/* Dashboard */}
+          {/* Blog Posts (was Dashboard) */}
           <Link
             href="/admin/dashboard"
             className="
@@ -471,55 +471,25 @@ export default function AdminDashboardPage() {
               items-center
               gap-[14px]
               rounded-[12px]
-              bg-[#fff4e6]
+              bg-[#EDE9FE]
               px-[16px]
               py-[12px]
               text-[14px]
               font-medium
-              text-[#ff9900]
+              text-[#A21CAF]
               transition-colors
-            "
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M3 13H11V3H3V13ZM3 21H11V15H3V21ZM13 21H21V11H13V21ZM13 3V9H21V3H13Z"
-                stroke="#ff9900"
-                strokeWidth="2"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span>Dashboard</span>
-          </Link>
-
-          {/* Blog */}
-          <Link
-            href="/admin/blog"
-            className="
-              mt-[8px]
-              flex
-              items-center
-              gap-[14px]
-              rounded-[12px]
-              px-[16px]
-              py-[12px]
-              text-[14px]
-              font-normal
-              text-[#666666]
-              transition-colors
-              hover:bg-[#f5f5f5]
-              hover:text-[#111111]
             "
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M4 4H20V20H4V4Z"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
               <path
                 d="M8 8H16M8 12H14M8 16H12"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -539,17 +509,16 @@ export default function AdminDashboardPage() {
               px-[16px]
               py-[12px]
               text-[14px]
-              font-normal
-              text-[#666666]
+              font-medium
+              text-[#A21CAF]
               transition-colors
-              hover:bg-[#f5f5f5]
-              hover:text-[#111111]
+              hover:bg-[#EDE9FE]
             "
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M12 5V19M5 12H19"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -559,7 +528,7 @@ export default function AdminDashboardPage() {
 
           {/* Contact */}
           <Link
-            href="/admin/contact"
+            href="/admin/contact_notification"
             className="
               mt-[8px]
               flex
@@ -569,17 +538,16 @@ export default function AdminDashboardPage() {
               px-[16px]
               py-[12px]
               text-[14px]
-              font-normal
-              text-[#666666]
+              font-medium
+              text-[#A21CAF]
               transition-colors
-              hover:bg-[#f5f5f5]
-              hover:text-[#111111]
+              hover:bg-[#EDE9FE]
             "
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M21 15C21 15.5523 20.5523 16 20 16H9L3 21V4C3 3.44772 3.44772 3 4 3H20C20.5523 3 21 3.44772 21 4V15Z"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
@@ -589,7 +557,7 @@ export default function AdminDashboardPage() {
 
           {/* Application */}
           <Link
-            href="/admin/application"
+            href="/admin/applicationss"
             className="
               mt-[8px]
               flex
@@ -599,23 +567,22 @@ export default function AdminDashboardPage() {
               px-[16px]
               py-[12px]
               text-[14px]
-              font-normal
-              text-[#666666]
+              font-medium
+              text-[#A21CAF]
               transition-colors
-              hover:bg-[#f5f5f5]
-              hover:text-[#111111]
+              hover:bg-[#EDE9FE]
             "
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M4 4H20V20H4V4Z"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
               <path
                 d="M8 8H16M8 12H14M8 16H12"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
@@ -635,29 +602,28 @@ export default function AdminDashboardPage() {
               px-[16px]
               py-[12px]
               text-[14px]
-              font-normal
-              text-[#666666]
+              font-medium
+              text-[#A21CAF]
               transition-colors
-              hover:bg-[#f5f5f5]
-              hover:text-[#111111]
+              hover:bg-[#EDE9FE]
             "
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path
                 d="M12 2L2 7L12 12L22 7L12 2Z"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
               <path
                 d="M2 17L12 22L22 17"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
               <path
                 d="M2 12L12 17L22 12"
-                stroke="#666666"
+                stroke="#A21CAF"
                 strokeWidth="2"
                 strokeLinejoin="round"
               />
@@ -681,7 +647,7 @@ export default function AdminDashboardPage() {
               px-[16px]
               py-[12px]
               text-[14px]
-              font-normal
+              font-medium
               text-[#ff4444]
               transition-colors
               hover:bg-[#fff0f0]
@@ -715,16 +681,10 @@ export default function AdminDashboardPage() {
         </nav>
 
         {/* Sidebar Footer */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-[#eeeeee] p-[20px]">
+        <div className="absolute bottom-0 left-0 right-0 border-t border-[#F3D8FF] p-[20px]">
           <div className="flex items-center gap-[12px]">
-            <div className="h-[40px] w-[40px] overflow-hidden rounded-full bg-[#eeeeee]">
-              <Image
-                src="/images/profile.png"
-                alt="Admin"
-                width={40}
-                height={40}
-                className="h-full w-full object-cover"
-              />
+            <div className="h-[40px] w-[40px] overflow-hidden rounded-full bg-[#D946EF] flex items-center justify-center">
+              <span className="text-white font-bold text-sm">A</span>
             </div>
             <div>
               <p className="text-[13px] font-medium text-[#111111]">Admin</p>
@@ -762,43 +722,15 @@ export default function AdminDashboardPage() {
               </button>
 
               <h1 className="text-[20px] font-bold text-[#111111] max-[600px]:text-[16px]">
-                Dashboard
+                Blog Posts
               </h1>
             </div>
 
             {/* Right Section */}
             <div className="flex items-center gap-[20px]">
-              {/* Notification */}
-              <button className="relative">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"
-                    stroke="#666666"
-                    strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21"
-                    stroke="#666666"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="absolute -right-1 -top-1 h-[18px] w-[18px] rounded-full bg-[#ff9900] text-[10px] font-bold text-white">
-                  3
-                </span>
-              </button>
-
-              {/* Profile */}
-              <button className="h-[40px] w-[40px] overflow-hidden rounded-full border border-[#eeeeee]">
-                <Image
-                  src="/images/profile.png"
-                  alt="Admin profile"
-                  width={40}
-                  height={40}
-                  className="h-full w-full object-cover"
-                />
+              {/* Profile - Light Purple Avatar */}
+              <button className="h-[40px] w-[40px] overflow-hidden rounded-full border border-[#F3D8FF] bg-[#D946EF] flex items-center justify-center">
+                <span className="text-white font-bold text-sm">A</span>
               </button>
             </div>
           </div>
@@ -820,7 +752,7 @@ export default function AdminDashboardPage() {
             </Link>
             <span className="text-[12px] text-[#aaaaaa]">&gt;</span>
             <span className="text-[12px] font-normal text-[#777777]">
-              Dashboard
+              Blog Posts
             </span>
           </div>
 
@@ -828,8 +760,8 @@ export default function AdminDashboardPage() {
               STATISTICS CARDS
           ================================================= */}
           <section className="mt-[30px]">
-            <div className="grid grid-cols-4 gap-[20px] max-[1000px]:grid-cols-2 max-[500px]:grid-cols-1">
-              <div className="rounded-[16px] border border-[#e2e2e2] bg-white p-[20px] transition-all duration-200 hover:shadow-lg">
+            <div className="grid grid-cols-2 gap-[20px] max-[500px]:grid-cols-1">
+              <div className="rounded-[16px] border border-[#E9D5FF] bg-white p-[20px] transition-all duration-200 hover:shadow-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-[13px] font-normal text-[#777777]">
@@ -839,17 +771,17 @@ export default function AdminDashboardPage() {
                       {blogs.length}
                     </h3>
                   </div>
-                  <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[12px] bg-[#fff4e6]">
+                  <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[12px] bg-[#FDF4FF]">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <path
                         d="M4 4H20V20H4V4Z"
-                        stroke="#ff9900"
+                        stroke="#C026D3"
                         strokeWidth="2"
                         strokeLinejoin="round"
                       />
                       <path
                         d="M8 8H16M8 12H14M8 16H12"
-                        stroke="#ff9900"
+                        stroke="#C026D3"
                         strokeWidth="2"
                         strokeLinecap="round"
                       />
@@ -858,7 +790,7 @@ export default function AdminDashboardPage() {
                 </div>
               </div>
 
-              <div className="rounded-[16px] border border-[#e2e2e2] bg-white p-[20px] transition-all duration-200 hover:shadow-lg">
+              <div className="rounded-[16px] border border-[#E9D5FF] bg-white p-[20px] transition-all duration-200 hover:shadow-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-[13px] font-normal text-[#777777]">
@@ -868,59 +800,13 @@ export default function AdminDashboardPage() {
                       {savedPosts.length}
                     </h3>
                   </div>
-                  <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[12px] bg-[#fff4e6]">
+                  <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[12px] bg-[#FDF4FF]">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <path
                         d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z"
-                        stroke="#ff9900"
+                        stroke="#C026D3"
                         strokeWidth="2"
                         strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-[16px] border border-[#e2e2e2] bg-white p-[20px] transition-all duration-200 hover:shadow-lg">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[13px] font-normal text-[#777777]">
-                      Published
-                    </p>
-                    <h3 className="mt-[5px] text-[28px] font-bold text-[#111111]">
-                      {blogs.filter(b => b.status === 'published' || b.status === 'Published').length || 0}
-                    </h3>
-                  </div>
-                  <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[12px] bg-[#e6f7e6]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M20 12L12 4L4 12M20 12L12 20L4 12M20 12H22M2 12H4M12 2V4M12 20V22"
-                        stroke="#2d8a4e"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-[16px] border border-[#e2e2e2] bg-white p-[20px] transition-all duration-200 hover:shadow-lg">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[13px] font-normal text-[#777777]">
-                      Drafts
-                    </p>
-                    <h3 className="mt-[5px] text-[28px] font-bold text-[#111111]">
-                      {blogs.filter(b => b.status === 'draft' || b.status === 'Draft').length || 0}
-                    </h3>
-                  </div>
-                  <div className="flex h-[50px] w-[50px] items-center justify-center rounded-[12px] bg-[#fff4e6]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M12 8V12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                        stroke="#ff9900"
-                        strokeWidth="2"
-                        strokeLinecap="round"
                       />
                     </svg>
                   </div>
@@ -950,8 +836,8 @@ export default function AdminDashboardPage() {
                   duration-200
                   ${
                     activeTab === "All Post"
-                      ? "bg-[#ff9900] text-white shadow-lg shadow-orange-200"
-                      : "border border-[#e5e5e5] bg-white text-[#777777] hover:border-[#999999]"
+                      ? "bg-[#C026D3] text-white shadow-lg shadow-purple-200"
+                      : "border border-[#E9D5FF] bg-white text-[#777777] hover:border-[#C026D3]"
                   }
                 `}
               >
@@ -974,8 +860,8 @@ export default function AdminDashboardPage() {
                   duration-200
                   ${
                     activeTab === "Popular"
-                      ? "bg-[#ff9900] text-white shadow-lg shadow-orange-200"
-                      : "border border-[#e5e5e5] bg-white text-[#777777] hover:border-[#999999]"
+                      ? "bg-[#C026D3] text-white shadow-lg shadow-purple-200"
+                      : "border border-[#E9D5FF] bg-white text-[#777777] hover:border-[#C026D3]"
                   }
                 `}
               >
@@ -998,8 +884,8 @@ export default function AdminDashboardPage() {
                   duration-200
                   ${
                     activeTab === "Saved"
-                      ? "bg-[#ff9900] text-white shadow-lg shadow-orange-200"
-                      : "border border-[#e5e5e5] bg-white text-[#777777] hover:border-[#999999]"
+                      ? "bg-[#C026D3] text-white shadow-lg shadow-purple-200"
+                      : "border border-[#E9D5FF] bg-white text-[#777777] hover:border-[#C026D3]"
                   }
                 `}
               >
@@ -1018,15 +904,15 @@ export default function AdminDashboardPage() {
                 justify-center
                 gap-[8px]
                 rounded-[12px]
-                bg-[#ff9900]
+                bg-[#C026D3]
                 text-[14px]
                 font-medium
                 text-white
                 shadow-lg
-                shadow-orange-200
+                shadow-purple-200
                 transition-all
                 duration-200
-                hover:bg-[#f28f00]
+                hover:bg-[#A21CAF]
                 hover:shadow-xl
                 active:scale-[0.97]
                 max-[600px]:w-[130px]
@@ -1045,7 +931,7 @@ export default function AdminDashboardPage() {
           {loading && blogs.length === 0 && !error && (
             <div className="flex min-h-[400px] items-center justify-center">
               <div className="text-center">
-                <div className="mx-auto h-[40px] w-[40px] animate-spin rounded-full border-[4px] border-[#eeeeee] border-t-[#ff9900]" />
+                <div className="mx-auto h-[40px] w-[40px] animate-spin rounded-full border-[4px] border-[#eeeeee] border-t-[#C026D3]" />
                 <p className="mt-[15px] text-[14px] text-[#777777]">
                   Loading blogs...
                 </p>
@@ -1057,7 +943,7 @@ export default function AdminDashboardPage() {
               ERROR
           ================================================= */}
           {!loading && error && (
-            <div className="mt-[50px] rounded-[12px] border border-[#eeeeee] bg-[#fafafa] p-[40px] text-center">
+            <div className="mt-[50px] rounded-[12px] border border-[#E9D5FF] bg-[#FDF4FF] p-[40px] text-center">
               <p className="text-[14px] text-[#777777]">{error}</p>
               <button
                 type="button"
@@ -1069,7 +955,7 @@ export default function AdminDashboardPage() {
                   }
                   fetchBlogs(token);
                 }}
-                className="mt-[20px] rounded-[10px] bg-[#ff9900] px-[30px] py-[12px] text-[14px] font-medium text-white transition-colors hover:bg-[#f28f00]"
+                className="mt-[20px] rounded-[10px] bg-[#C026D3] px-[30px] py-[12px] text-[14px] font-medium text-white transition-colors hover:bg-[#A21CAF]"
               >
                 Try Again
               </button>
@@ -1088,26 +974,22 @@ export default function AdminDashboardPage() {
                 return (
                   <article
                     key={blogId}
-                    className="mb-[40px] w-full border-b border-[#e2e2e2] pb-[40px]"
+                    className="mb-[40px] w-full border-b border-[#E9D5FF] pb-[40px]"
                   >
                     <div className="grid grid-cols-[1fr_250px] gap-[60px] max-[1000px]:grid-cols-[1fr_220px] max-[800px]:grid-cols-[1fr_190px] max-[650px]:grid-cols-1">
                       {/* LEFT SIDE */}
                       <div className="min-w-0">
                         {/* AUTHOR */}
                         <div className="flex items-center gap-[12px]">
-                          <div className="h-[30px] w-[30px] shrink-0 overflow-hidden rounded-full bg-[#eeeeee]">
-                            <Image
-                              src="/images/profile.png"
-                              alt="Author"
-                              width={30}
-                              height={30}
-                              className="h-full w-full object-cover"
-                            />
+                          <div className="h-[30px] w-[30px] shrink-0 overflow-hidden rounded-full bg-[#D946EF] flex items-center justify-center">
+                            <span className="text-white font-bold text-xs">
+                              {getAuthor(blog).charAt(0).toUpperCase()}
+                            </span>
                           </div>
                           <span className="text-[14px] font-medium text-[#111111]">
                             {getAuthor(blog)}
                           </span>
-                          <span className="flex h-[22px] min-w-[50px] items-center justify-center rounded-full bg-[#ffd58d] px-[10px] text-[10px] font-medium text-white">
+                          <span className="flex h-[22px] min-w-[50px] items-center justify-center rounded-full bg-[#C026D3] px-[10px] text-[10px] font-medium text-white">
                             Admin
                           </span>
                         </div>
@@ -1117,7 +999,7 @@ export default function AdminDashboardPage() {
                           href={`/admin/blog/${blogId}`}
                           className="mt-[15px] block max-w-[600px]"
                         >
-                          <h2 className="text-[22px] font-bold leading-[30px] text-[#111111] transition-colors hover:text-[#ff9900] max-[650px]:text-[20px] max-[650px]:leading-[27px]">
+                          <h2 className="text-[22px] font-bold leading-[30px] text-[#111111] transition-colors hover:text-[#C026D3] max-[650px]:text-[20px] max-[650px]:leading-[27px]">
                             {getTitle(blog)}
                           </h2>
                         </Link>
@@ -1150,15 +1032,15 @@ export default function AdminDashboardPage() {
                             >
                               <path
                                 d="M1 1.2C1 .758 1.358.4 1.8.4h4.4c.442 0 .8.358.8.8v7.6L4 7.3 1 8.8V1.2Z"
-                                stroke={isSaved ? "#ff9900" : "#777777"}
+                                stroke={isSaved ? "#C026D3" : "#777777"}
                                 strokeWidth="0.7"
-                                fill={isSaved ? "#ff9900" : "none"}
+                                fill={isSaved ? "#C026D3" : "none"}
                               />
                             </svg>
                           </button>
                           <Link
                             href={`/admin/blog/edit/${blogId}`}
-                            className="flex items-center gap-[6px] text-[11px] font-medium text-[#ff9900] hover:underline"
+                            className="flex items-center gap-[6px] text-[11px] font-medium text-[#A21CAF] hover:underline"
                           >
                             <svg
                               width="12"
@@ -1169,7 +1051,7 @@ export default function AdminDashboardPage() {
                             >
                               <path
                                 d="M5.85.65a.7.7 0 0 1 .99.99L2.1 6.37.5 6.8l.43-1.6L5.85.65Z"
-                                stroke="#ff9900"
+                                stroke="#A21CAF"
                                 strokeWidth="0.7"
                                 strokeLinejoin="round"
                               />
@@ -1182,7 +1064,7 @@ export default function AdminDashboardPage() {
                       {/* RIGHT BLOG IMAGE */}
                       <Link
                         href={`/admin/blog/${blogId}`}
-                        className="block h-[180px] w-[250px] overflow-hidden rounded-[12px] bg-[#eeeeee] max-[1000px]:h-[170px] max-[1000px]:w-[220px] max-[800px]:h-[150px] max-[800px]:w-[190px] max-[650px]:mt-[20px] max-[650px]:h-[250px] max-[650px]:w-full"
+                        className="block h-[180px] w-[250px] overflow-hidden rounded-[12px] bg-[#FDF4FF] max-[1000px]:h-[170px] max-[1000px]:w-[220px] max-[800px]:h-[150px] max-[800px]:w-[190px] max-[650px]:mt-[20px] max-[650px]:h-[250px] max-[650px]:w-full"
                       >
                         <Image
                           src={getImageUrl(blog)}
@@ -1216,7 +1098,7 @@ export default function AdminDashboardPage() {
               {activeTab !== "Saved" && (
                 <Link
                   href="/createblog"
-                  className="mt-[25px] inline-flex h-[44px] items-center justify-center rounded-[12px] bg-[#ff9900] px-[30px] text-[14px] font-medium text-white transition-colors hover:bg-[#f28f00]"
+                  className="mt-[25px] inline-flex h-[44px] items-center justify-center rounded-[12px] bg-[#C026D3] px-[30px] text-[14px] font-medium text-white transition-colors hover:bg-[#A21CAF]"
                 >
                   Create Post
                 </Link>

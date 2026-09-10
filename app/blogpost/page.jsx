@@ -402,18 +402,6 @@ export default function BlogPostPage() {
                           {/* AUTHOR */}
                           <div className="flex items-center gap-[10px]">
 
-                            <div className="relative h-[32px] w-[32px] overflow-hidden rounded-full bg-[#eeeeee]">
-
-                              <Image
-                                src="/images/profile.png"
-                                alt={getAuthor(blog)}
-                                fill
-                                sizes="32px"
-                                className="object-cover"
-                              />
-
-                            </div>
-
                             <div className="flex items-center gap-[8px]">
 
                               <span className="text-[13px] font-[600] text-[#222222]">

@@ -1,3 +1,4 @@
+
 {
   "name": "landing",
   "version": "0.1.0",
@@ -9,13 +10,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "framer-motion": "^13.2.0",
     "lucide-react": "^1.43.0",
-=======
-    "framer-motion": "^13.1.1",
-    "lucide-react": "^1.42.0",
->>>>>>> 469e2e54f20a6eed7a09894c87b84c8f3145c9e3
     "next": "16.3.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -32,3 +28,4 @@
     "typescript": "^5"
   }
 }
+
