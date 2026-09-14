@@ -3,6 +3,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const fadeUp = {
   hidden: {
@@ -90,6 +92,8 @@ const cardAnimation = {
 
 const App = () => {
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen overflow-hidden bg-white text-[#202027]">
 
       {/* ================= HERO ================= */}
@@ -802,6 +806,8 @@ const App = () => {
       </section>
 
     </div>
+    <Footer />
+    </>
   );
 };
 

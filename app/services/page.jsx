@@ -3,8 +3,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";  
 
-/* ================= ANIMATION VARIANTS ================= */
 
 const fadeUp = {
   hidden: {
@@ -90,15 +91,12 @@ const cardAnimation = {
   },
 };
 
-/* ================= PAGE ================= */
 
 const App = () => {
   return (
+    <>
+    <Navbar />
     <main className="min-h-screen overflow-hidden bg-white text-[#202027]">
-
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
 
       <section className="relative overflow-hidden bg-[#fffaf0] px-6 py-16 md:py-24">
 
@@ -172,9 +170,6 @@ const App = () => {
         </motion.div>
       </section>
 
-      {/* =====================================================
-          BENEFITS SECTION
-      ===================================================== */}
 
       <section className="px-6 py-16 md:py-24">
 
@@ -329,9 +324,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* =====================================================
-          SERVICES SECTION
-      ===================================================== */}
 
       <section className="px-6 pb-20">
 
@@ -362,7 +354,6 @@ const App = () => {
 
           </motion.div>
 
-          {/* Service Grid */}
 
           <motion.div
             className="mt-12 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3"
@@ -375,7 +366,6 @@ const App = () => {
             variants={staggerContainer}
           >
 
-            {/* ================= SERVICE 1 ================= */}
 
             <motion.div
               variants={cardAnimation}
@@ -423,7 +413,6 @@ const App = () => {
 
             </motion.div>
 
-            {/* ================= SERVICE 2 ================= */}
 
             <motion.div
               variants={cardAnimation}
@@ -471,7 +460,6 @@ const App = () => {
 
             </motion.div>
 
-            {/* ================= SERVICE 3 ================= */}
 
             <motion.div
               variants={cardAnimation}
@@ -519,7 +507,6 @@ const App = () => {
 
             </motion.div>
 
-            {/* ================= SERVICE 4 ================= */}
 
             <motion.div
               variants={cardAnimation}
@@ -567,7 +554,6 @@ const App = () => {
 
             </motion.div>
 
-            {/* ================= SERVICE 5 ================= */}
 
             <motion.div
               variants={cardAnimation}
@@ -615,7 +601,6 @@ const App = () => {
 
             </motion.div>
 
-            {/* ================= SERVICE 6 ================= */}
 
             <motion.div
               variants={cardAnimation}
@@ -716,9 +701,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* =====================================================
-          TESTIMONIALS
-      ===================================================== */}
 
       <section className="bg-[#fff8e5] px-6 py-14 md:py-18">
 
@@ -794,7 +776,6 @@ const App = () => {
 
             </motion.div>
 
-            {/* Testimonial 2 */}
 
             <motion.div
               className="rounded-lg bg-white p-6 shadow-sm"
@@ -836,9 +817,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* =====================================================
-          CLIENTS
-      ===================================================== */}
 
       <section className="px-6 py-16">
 
@@ -908,9 +886,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* =====================================================
-          CTA
-      ===================================================== */}
 
       <section className="px-6 pb-16">
 
@@ -960,6 +935,8 @@ const App = () => {
       </section>
 
     </main>
+    <Footer />
+    </>
   );
 };
 

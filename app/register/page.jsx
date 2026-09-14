@@ -4,6 +4,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const API_URL =
   "https://toshconsultblogfastapi.onrender.com/course-registrations";
@@ -103,8 +105,9 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="min-h-screen w-full bg-[#fafafa] text-[#222]">
-
+    <>
+    <Navbar />
+    <main className="min-h-screen w-full mt-25 bg-[#fafafa] text-[#222]">
       {/* PAGE CONTAINER */}
       <div
         className="
@@ -112,23 +115,22 @@ export default function RegisterPage() {
           w-[92%]
           max-w-[900px]
           pb-[70px]
-          pt-[80px]
-          mt-[30px]
+          pt-[30px]
+          mt-0
 
-          max-[768px]:pt-[60px]
+          max-[768px]:pt-[20px]
 
           max-[480px]:w-[94%]
-          max-[480px]:pt-[45px]
+          max-[480px]:pt-[15px]
         "
       >
-
         {/* FORM CARD */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="
-            mt-[35px]
+            mt-0
             rounded-[14px]
             border
             border-[#e8e8e8]
@@ -141,10 +143,8 @@ export default function RegisterPage() {
             max-[480px]:p-[20px]
           "
         >
-
           {/* HEADER */}
           <div className="mb-[35px]">
-
             <div
               className="
                 flex
@@ -183,12 +183,10 @@ export default function RegisterPage() {
               selected training. Make sure your information is
               correct before submitting the form.
             </p>
-
           </div>
 
           {/* FORM */}
           <form onSubmit={handleSubmit}>
-
             {/* FULL NAME + EMAIL */}
             <div
               className="
@@ -200,7 +198,6 @@ export default function RegisterPage() {
                 max-[600px]:gap-x-0
               "
             >
-
               <Input
                 label="Full Name"
                 name="full_name"
@@ -220,12 +217,10 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
               />
-
             </div>
 
             {/* COURSE */}
             <div className="mb-[27px] w-full">
-
               <Select
                 label="Choose Course"
                 name="course"
@@ -241,7 +236,6 @@ export default function RegisterPage() {
                   </option>
                 ))}
               </Select>
-
             </div>
 
             {/* STATE + CITY */}
@@ -255,7 +249,6 @@ export default function RegisterPage() {
                 max-[600px]:gap-x-0
               "
             >
-
               <Input
                 label="State"
                 name="state"
@@ -275,7 +268,6 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
               />
-
             </div>
 
             {/* COURSE TYPE + OTHERS */}
@@ -289,9 +281,7 @@ export default function RegisterPage() {
                 max-[600px]:gap-x-0
               "
             >
-
               <div className="mb-[27px] w-full">
-
                 <Select
                   label="Course Type"
                   name="course_type"
@@ -306,7 +296,6 @@ export default function RegisterPage() {
                     </option>
                   ))}
                 </Select>
-
               </div>
 
               <Input
@@ -317,12 +306,10 @@ export default function RegisterPage() {
                 value={formData.other}
                 onChange={handleChange}
               />
-
             </div>
 
             {/* REASON */}
             <div className="mb-[30px] w-full">
-
               <label
                 htmlFor="reason"
                 className="
@@ -386,7 +373,6 @@ export default function RegisterPage() {
                   max-[480px]:text-[12px]
                 "
               />
-
             </div>
 
             {/* SUCCESS MESSAGE */}
@@ -476,7 +462,6 @@ export default function RegisterPage() {
             >
               {loading ? "Submitting..." : "Submit Application"}
             </motion.button>
-
           </form>
         </motion.div>
 
@@ -503,9 +488,10 @@ export default function RegisterPage() {
             ← Back To Home
           </Link>
         </motion.div>
-
       </div>
     </main>
+    <Footer />
+    </>
   );
 }
 
@@ -524,7 +510,6 @@ function Input({
 }) {
   return (
     <div className="mb-[27px] w-full">
-
       <label
         htmlFor={name}
         className="
@@ -573,7 +558,6 @@ function Input({
           max-[480px]:text-[12px]
         "
       />
-
     </div>
   );
 }
@@ -592,7 +576,6 @@ function Select({
 }) {
   return (
     <div className="w-full">
-
       <label
         htmlFor={name}
         className="
@@ -640,7 +623,6 @@ function Select({
       >
         {children}
       </select>
-
     </div>
   );
 }

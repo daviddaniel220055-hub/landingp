@@ -1,6 +1,10 @@
 "use client";
 
+import { i } from "framer-motion/client";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";  
 
 const courses = [
   "Web Development",
@@ -107,6 +111,8 @@ export default function RegisterPage() {
   };
 
   return (
+    <>
+      <Navbar />
     <div className="min-h-screen w-full bg-[#fafafa]">
       <main
         className="
@@ -641,5 +647,7 @@ export default function RegisterPage() {
         </a>
       </main>
     </div>
+      <Footer />
+    </>
   );
 }

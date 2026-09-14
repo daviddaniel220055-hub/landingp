@@ -15,7 +15,8 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const benefits = [
   {
@@ -197,7 +198,9 @@ function App() {
 
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-white text-[#111827]">
+    <>
+    <Navbar/>
+    <div className="min-h-screen w-full mt-10 overflow-x-hidden bg-white text-[#111827]">
 
       <section className="relative min-h-[320px] overflow-hidden bg-gradient-to-r from-[#fff9e9] via-[#fffdf6] to-[#fceaf5] sm:min-h-[350px] md:min-h-[390px]">
 
@@ -602,6 +605,8 @@ function App() {
         </section>
       </main>
     </div>
+    <Footer/>
+    </>
   );
 }
 
